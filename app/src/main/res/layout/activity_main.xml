@@ -71,11 +71,11 @@
             android:layout_gravity="center"
             android:text="CricLova"
             android:textSize="24sp"
-            tools:text="CricLowa" />
+            tools:text="CricLova" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -86,23 +86,17 @@
 
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
-            android:layout_width="wrap_content"
+            android:id="@+id/input_password"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Usernames"
-            tools:text="Username" />
+            android:hint="Email" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
-            android:layout_width="wrap_content"
+            android:id="@+id/input_password"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Password"
-            tools:text="Password" />
+            android:hint="Password" />
     </LinearLayout>
 
 
