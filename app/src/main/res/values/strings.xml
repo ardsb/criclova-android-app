@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">CricLova</string>
+    <string name="Open">CricLova</string>
+    <string name="Close">CricLova</string>
 
 </resources>
