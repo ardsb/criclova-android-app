@@ -2,30 +2,45 @@
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.view.View;
+import android.os.Handler;
+import android.text.TextUtils;
 import android.widget.Button;
 
 public class SplashActivity extends AppCompatActivity {
     Button login;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         getSupportActionBar().hide();
-        login = findViewById(R.id.btnLogin);
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        sharedPreferences = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor= sharedPreferences.edit();
 
-                Intent mainActivityIntent = new Intent(SplashActivity.this,MainActivity.class);
-                startActivity(mainActivityIntent);
-                finish();
+        String name= sharedPreferences.getString("Name",null);
+        String pswd= sharedPreferences.getString("Password",null);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+
+                if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(pswd)){
+                    startActivity(new Intent(SplashActivity.this, HomepageActivity.class));
+                    finish();
+                }else {
+                    startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+                    finish();
+                }
+
 
             }
-        });
+        }, 3*1000);
+
     }
 }

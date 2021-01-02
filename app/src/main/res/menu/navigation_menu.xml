@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/imgProfile"
-        android:title="Home"
+        android:title="Logout"
         android:icon="@drawable/ic_baseline_home_24">
 
     </item>
@@ -14,7 +14,7 @@
     </item>
     <item
         android:id="@+id/imgSetting"
-        android:title="Setting"
+        android:title="Exit"
         android:icon="@drawable/ic_baseline_settings_24">
 
     </item>
