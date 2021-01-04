@@ -57,7 +57,7 @@ public class HomepageActivity extends AppCompatActivity {
                 }
                 else if (id ==R.id.imgSetting){
 
-                    Toast.makeText(HomepageActivity.this,"Settings",Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(HomepageActivity.this,"Settings",Toast.LENGTH_SHORT).show();
                     finish();
                 }
                 return true;
