@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "311132057727",
+    "project_id": "criclowa",
+    "storage_bucket": "criclowa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:311132057727:android:76e262dbb30bfff0e40f4a",
+        "android_client_info": {
+          "package_name": "com.example.criclowa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "311132057727-ir085lor4jvjkt1bq7ti8kp2vkce7g7n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAH2hI_E-Jpiz6X4Cs0TldW2kN2K_J-e-w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "311132057727-ir085lor4jvjkt1bq7ti8kp2vkce7g7n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

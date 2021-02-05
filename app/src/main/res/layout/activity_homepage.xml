@@ -11,13 +11,18 @@
 
     >
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomepageActivity">
+    tools:context=".HomepageActivity"
+    >
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="arkam"
+        android:gravity="center">
+
+    </TextView>
 </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView
