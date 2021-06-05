@@ -19,7 +19,7 @@
         android:background="#65050505"
         android:fadeScrollbars="false"
         android:hapticFeedbackEnabled="false"
-        tools:context=".SplashActivity">
+        tools:context=".View.SplashActivity">
 
         <LinearLayout
             android:layout_width="wrap_content"

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomepageActivity"
+    tools:context=".View.HomepageActivity"
     android:orientation="vertical"
     android:id="@+id/d1"
 
@@ -13,16 +13,13 @@
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomepageActivity"
+    tools:context=".View.HomepageActivity"
     >
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="arkam"
-        android:gravity="center">
-
-    </TextView>
+        android:layout_height="match_parent" />
 </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView

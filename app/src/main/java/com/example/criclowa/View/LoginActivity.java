@@ -1,4 +1,4 @@
-package com.example.criclowa;
+package com.example.criclowa.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +14,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.criclowa.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -91,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
                 String password=input2.getText().toString();
 
                 signInUser(email,password);
-                Intent main = new Intent(LoginActivity.this,HomepageActivity.class);
+                Intent main = new Intent(LoginActivity.this, HomepageActivity.class);
                 startActivity(main);
 
 

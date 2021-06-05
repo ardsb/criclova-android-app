@@ -1,4 +1,4 @@
-  package com.example.criclowa;
+  package com.example.criclowa.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +10,9 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.widget.Button;
 
-public class SplashActivity extends AppCompatActivity {
+import com.example.criclowa.R;
+
+  public class SplashActivity extends AppCompatActivity {
     Button login;
     SharedPreferences sharedPreferences;
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.criclowa">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -9,9 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CricLowa">
-        <activity android:name=".HomepageActivity"></activity>
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".SplashActivity">
+        <activity android:name=".View.HomepageActivity"></activity>
+        <activity android:name=".View.RegisterActivity" />
+        <activity android:name=".View.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".View.LoginActivity"
             android:windowSoftInputMode="adjustResize" />
     </application>
 
