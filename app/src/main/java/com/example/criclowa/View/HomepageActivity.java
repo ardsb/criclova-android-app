@@ -18,10 +18,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.criclowa.Adapter.MatchAdapter;
+import com.example.criclowa.Adapter.NewsAdapter;
 import com.example.criclowa.Model.Match;
 import com.example.criclowa.Model.MatchList;
+import com.example.criclowa.Model.SportNews;
+import com.example.criclowa.Model.SportNewsResponse;
 import com.example.criclowa.R;
 import com.example.criclowa.Services.ApiClient;
+import com.example.criclowa.Services.ApiClientNews;
 import com.example.criclowa.Services.ApiInterface;
 import com.google.android.material.navigation.NavigationView;
 
@@ -37,10 +41,11 @@ public class HomepageActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     String TAG = HomepageActivity.class.getSimpleName();
     private final static String API_KEY ="jAOkpmcytOgBLzmtvhzmtfOLbfP2";
-    RecyclerView recyclerView;
-    private MatchList MatchList;
-    TextView txtScores;
-    Button btnLiveScore;
+    private final static String API_Key2 ="fa0a460e2ca943f7bd5cf89cf16855cc";
+    private final static String Country="in";
+    private final static String Cat="sports";
+    RecyclerView recyclerView,recyclerView2;
+
 
 
     @Override
@@ -51,7 +56,13 @@ public class HomepageActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        getWeatherData();
+        getScoreData();
+
+        recyclerView2 = findViewById(R.id.recycler2);
+        recyclerView2.setLayoutManager(new LinearLayoutManager(this));
+
+        getMatchNews();
+
 
 
 
@@ -102,7 +113,7 @@ public class HomepageActivity extends AppCompatActivity {
     }
 
 
-    private void getWeatherData() {
+    private void getScoreData() {
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
         Call<MatchList> call = apiInterface.getMatchScore(API_KEY);
@@ -135,6 +146,49 @@ public class HomepageActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<MatchList> call, Throwable t) {
+                Log.e(TAG, String.format("onFailure: %s", t.getMessage()));
+
+
+            }
+
+        });
+
+
+    }
+
+    private void getMatchNews() {
+        ApiInterface apiInterface = ApiClientNews.getClient().create(ApiInterface.class);
+
+        Call<SportNewsResponse> call = apiInterface.getMatchNews(Country,Cat,API_Key2);
+
+        ((Call) call).enqueue(new Callback<SportNewsResponse>() {
+            @Override
+            public void onResponse(Call<SportNewsResponse> call, Response<SportNewsResponse> response) {
+
+
+                if (response.isSuccessful() && response.body().getArticle().size() > 0){
+                    List<SportNews> News =response.body().getArticle();
+
+
+                    NewsAdapter adapter = new NewsAdapter(News, R.layout.news_layout, getApplicationContext());
+
+                    recyclerView2.setAdapter(adapter);
+
+
+//                    String image_url = IMAGE_URL_BASE_PATH + response.body().getWeather().getIcon();
+//                    Picasso.get().load(image_url).into(imgWeather);
+
+
+                } else {
+                    Toast.makeText(HomepageActivity.this, response.message(), Toast.LENGTH_SHORT).show();
+                }
+
+
+
+            }
+
+            @Override
+            public void onFailure(Call<SportNewsResponse> call, Throwable t) {
                 Log.e(TAG, String.format("onFailure: %s", t.getMessage()));
 
 

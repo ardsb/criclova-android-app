@@ -21,8 +21,9 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.MatchViewHol
 
 
 
+
     public static class MatchViewHolder extends RecyclerView.ViewHolder {
-        TextView scores;
+        TextView scores,description;
 
         public MatchViewHolder(View v) {
 
@@ -53,6 +54,8 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.MatchViewHol
 
         String item= match.get(position).getTitle();
         holder.scores.setText(match.get(position).getTitle());
+
+
 
     }
 

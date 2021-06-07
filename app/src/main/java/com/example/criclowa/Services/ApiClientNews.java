@@ -3,9 +3,9 @@ package com.example.criclowa.Services;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ApiClient {
+public class ApiClientNews {
 
-    public static final String BASE_URL = "https://cricapi.com/";
+    public static final String BASE_URL = "https://newsapi.org/v2/";
     private static Retrofit retrofit = null;
 
 

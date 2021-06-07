@@ -16,13 +16,6 @@ public class Match {
     public String title;
 
 
-    public Match(String unique_id, String description, String title) {
-        this.unique_id = unique_id;
-        this.description = description;
-        this.title = title;
-    }
-
-
     public String getUnique_id() {
         return unique_id;
     }
