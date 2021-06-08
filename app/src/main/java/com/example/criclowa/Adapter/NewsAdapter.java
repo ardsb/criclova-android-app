@@ -1,9 +1,11 @@
 package com.example.criclowa.Adapter;
 
 import android.content.Context;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,13 +23,13 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     private final List<SportNews> SportNews;
     private int rowLayout;
     private Context context;
-    public final String IMAGE_URL_BASE_PATH = "https://static.toiimg.com/thumb/msid-83301848,width-1070,height-580,imgsize-48696,resizemode-75,overlay-toi_sw,pt-32,y_pad-40/photo.jpg";
 
 
 
 
     public static class NewsViewHolder extends RecyclerView.ViewHolder {
         TextView author,title,description;
+        Button moreInfo;
         ImageView newsPoster;
 
         public NewsViewHolder(View v) {
@@ -38,6 +40,14 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
             title =v.findViewById(R.id.txtTitle);
             description=v.findViewById(R.id.txtDescription);
             newsPoster=v.findViewById(R.id.imgPoster);
+            moreInfo=v.findViewById(R.id.btnMoreInfo);
+
+            moreInfo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                moreInfo.setMovementMethod(LinkMovementMethod.getInstance());
+                }
+            });
         }
     }
 
@@ -69,8 +79,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         String item3=SportNews.get(position).getDescription();
         holder.description.setText(SportNews.get(position).getDescription());
 
-
-        String image_url = IMAGE_URL_BASE_PATH + SportNews.get(position).getImage();
+        String image_url = SportNews.get(position).getImage();
         Picasso.get().load(image_url).into(holder.newsPoster);
 
     }

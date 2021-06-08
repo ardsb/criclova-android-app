@@ -16,6 +16,17 @@ public class SportNews {
     @SerializedName("urlToImage")
     public String image;
 
+    @SerializedName("url")
+    public String moreInfo;
+
+    public String getMoreInfo() {
+        return moreInfo;
+    }
+
+    public void setMoreInfo(String moreInfo) {
+        this.moreInfo = moreInfo;
+    }
+
     public String getImage() {
         return image;
     }

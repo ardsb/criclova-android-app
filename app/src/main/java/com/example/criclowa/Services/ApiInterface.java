@@ -1,9 +1,9 @@
 package com.example.criclowa.Services;
 
-import com.example.criclowa.Model.Match;
 import com.example.criclowa.Model.MatchList;
-import com.example.criclowa.Model.SportNews;
-import com.example.criclowa.Model.SportNewsResponse;
+import com.example.criclowa.Model.SportNewsList;
+import com.example.criclowa.Model.Item;
+import com.example.criclowa.Model.SportVideosResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -15,7 +15,9 @@ public interface ApiInterface {
     Call<MatchList> getMatchScore(@Query("apikey") String name);
 
     @GET("top-headlines")
-    Call<SportNewsResponse> getMatchNews(@Query("country") String country,@Query("category") String cat,@Query("apiKey") String name);
+    Call<SportNewsList> getMatchNews(@Query("country") String country, @Query("category") String cat, @Query("apiKey") String name);
 
+    @GET("search")
+    Call<SportVideosResponse> getMatchVideos(@Query("key") String key, @Query("channelId") String chId, @Query("part") String part);
 
 }

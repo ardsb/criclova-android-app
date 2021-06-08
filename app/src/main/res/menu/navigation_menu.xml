@@ -2,20 +2,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/imgProfile"
-        android:title="Logout"
-        android:icon="@drawable/ic_baseline_home_24">
+        android:icon="@drawable/ic_baseline_sports_cricket_24"
+        android:title="My Statistic">
 
     </item>
     <item
         android:id="@+id/imgHome"
-        android:title="News and Videos"
-        android:icon="@drawable/ic_baseline_video_library_24">
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Home">
 
     </item>
     <item
-        android:id="@+id/imgSetting"
-        android:title="Exit"
-        android:icon="@drawable/ic_baseline_settings_24">
+        android:id="@+id/imgLogout"
+        android:icon="@drawable/ic_baseline_stop_circle_24"
+        android:title="Logout">
+
+    </item>
+    <item
+        android:id="@+id/imgExit"
+        android:icon="@drawable/ic_baseline_exit_to_app_24"
+        android:title="Exit">
 
     </item>
 

@@ -9,9 +9,10 @@
     >
 
     <ImageView
+        android:id="@+id/btnProfile"
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_gravity="center"
-        android:background="@drawable/ic_baseline_account_circle_24"/>
+        android:background="@drawable/ic_baseline_account_circle_24" />
 
 </LinearLayout>
