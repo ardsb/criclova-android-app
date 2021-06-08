@@ -28,8 +28,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
 
     public static class NewsViewHolder extends RecyclerView.ViewHolder {
-        TextView author,title,description;
-        Button moreInfo;
+        TextView author,title,description,moreInfo;
         ImageView newsPoster;
 
         public NewsViewHolder(View v) {
@@ -41,13 +40,13 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
             description=v.findViewById(R.id.txtDescription);
             newsPoster=v.findViewById(R.id.imgPoster);
             moreInfo=v.findViewById(R.id.btnMoreInfo);
-
-            moreInfo.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                moreInfo.setMovementMethod(LinkMovementMethod.getInstance());
-                }
-            });
+//
+//            moreInfo.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                moreInfo.setMovementMethod(LinkMovementMethod.getInstance());
+//                }
+//            });
         }
     }
 
@@ -78,6 +77,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
         String item3=SportNews.get(position).getDescription();
         holder.description.setText(SportNews.get(position).getDescription());
+
+        String item4=SportNews.get(position).getMoreInfo();
+        holder.moreInfo.setText(SportNews.get(position).getMoreInfo());
+
+
 
         String image_url = SportNews.get(position).getImage();
         Picasso.get().load(image_url).into(holder.newsPoster);

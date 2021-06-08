@@ -2,8 +2,6 @@
     <string name="app_name">CricLova</string>
     <string name="Open">CricLova</string>
     <string name="Close">CricLova</string>
-    <string name="more_info">
-        <a href="https://timesofindia.indiatimes.com/sports/football/top-stories/india-captain-sunil-chhetri-goes-past-lionel-messis-tally-of-international-goals/articleshow/83329216.cms">More Info</a>
-    </string>
+
 
 </resources>
