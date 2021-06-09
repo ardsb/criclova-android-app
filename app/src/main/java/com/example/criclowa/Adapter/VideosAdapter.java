@@ -24,7 +24,6 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosAdapter.VideosView
     private final List<Item> items;
     private int rowLayout;
     private Context context;
-    public final String IMAGE_URL_BASE_PATH = "https://i.ytimg.com/vi/t-fFhpD1-Xs/mqdefault.jpg";
 
 
 

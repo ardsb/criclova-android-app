@@ -1,6 +1,7 @@
 package com.example.criclowa.Services;
 
 import com.example.criclowa.Model.MatchList;
+import com.example.criclowa.Model.PlayerStatistic;
 import com.example.criclowa.Model.SportNewsList;
 import com.example.criclowa.Model.Item;
 import com.example.criclowa.Model.SportVideosResponse;
@@ -13,6 +14,9 @@ public interface ApiInterface {
 
     @GET("api/cricket")
     Call<MatchList> getMatchScore(@Query("apikey") String name);
+
+    @GET("api/playerStats")
+    Call<PlayerStatistic> getPlayerStatistic(@Query("apikey") String key,@Query("pid") String pid);
 
     @GET("top-headlines")
     Call<SportNewsList> getMatchNews(@Query("country") String country, @Query("category") String cat, @Query("apiKey") String name);

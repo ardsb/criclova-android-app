@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="400dp"
             android:fontFamily="sans-serif-black"
-            android:text="Cricket Videos"
+            android:text="Videos"
             android:textSize="18sp"
             android:typeface="monospace" />
 

@@ -25,6 +25,7 @@ import com.example.criclowa.Adapter.NewsAdapter;
 import com.example.criclowa.Adapter.VideosAdapter;
 import com.example.criclowa.Model.Match;
 import com.example.criclowa.Model.MatchList;
+import com.example.criclowa.Model.PlayerStatistic;
 import com.example.criclowa.Model.SportNews;
 import com.example.criclowa.Model.SportNewsList;
 import com.example.criclowa.Model.Item;
@@ -35,9 +36,11 @@ import com.example.criclowa.Services.ApiClientNews;
 import com.example.criclowa.Services.ApiClientVideos;
 import com.example.criclowa.Services.ApiInterface;
 import com.google.android.material.navigation.NavigationView;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -54,8 +57,10 @@ public class HomepageActivity extends AppCompatActivity {
     private final static String API_Key_VIDEOS ="AIzaSyANcGmjuaXKqU3PfhiVdyNo4GBXGFTJZto";
     private final static String chId="UCkd4takjjF1EGD1TKIK2QiA";
     private final static String part="snippet,id";
+    private final static String pid="35320";
     RecyclerView recyclerView,recyclerView2,recyclerView3;
-    ImageView profile;
+    TextView profileName,profileCountryName;
+    CircleImageView profile;
 
 
 
@@ -81,6 +86,11 @@ public class HomepageActivity extends AppCompatActivity {
         helper3.attachToRecyclerView(recyclerView3);
 
         getMatchVideos();
+
+
+
+
+        getPlayerStatistic();
 
 
 
@@ -283,6 +293,54 @@ public class HomepageActivity extends AppCompatActivity {
     }
 
 
+    private void getPlayerStatistic() {
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+
+        Call<PlayerStatistic> call = apiInterface.getPlayerStatistic(API_KEY_SCORES,pid);
+
+        ((Call) call).enqueue(new Callback<PlayerStatistic>() {
+            @Override
+            public void onResponse(Call<PlayerStatistic> call, Response<PlayerStatistic> response) {
+
+
+
+                if (response.isSuccessful()){
+
+
+                    profile=findViewById(R.id.btnProfile);
+                    profileName = findViewById(R.id.txtProfileName);
+                    profileCountryName= findViewById(R.id.txtProfileCountryName);
+
+
+                    profileName.setText(response.body().getPlayerName());
+                    profileCountryName.setText(response.body().getCountry());
+                    String image_url = response.body().getImageurl();
+                    Picasso.get().load(image_url).into(profile);
+
+
+
+
+                } else {
+                    Log.e(TAG, String.format("OnFailure: %s", response.message()));
+                    Toast.makeText(HomepageActivity.this, response.message(), Toast.LENGTH_SHORT).show();
+                }
+
+
+
+            }
+
+            @Override
+            public void onFailure(Call<PlayerStatistic> call, Throwable t) {
+                Log.e(TAG, String.format("onFailure: %s", t.getMessage()));
+
+
+            }
+
+        });
+
+
+
+    }
 
 
 
