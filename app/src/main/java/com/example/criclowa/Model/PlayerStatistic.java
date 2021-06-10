@@ -2,6 +2,8 @@ package com.example.criclowa.Model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class PlayerStatistic {
 
     @SerializedName("name")
@@ -31,6 +33,17 @@ public class PlayerStatistic {
     @SerializedName("playingRole")
     public String playingRole;
 
+    @SerializedName("data")
+    public BowlingAndBatting data;
+
+
+    public  BowlingAndBatting getData() {
+        return data;
+    }
+
+    public void setData(BowlingAndBatting data) {
+        this.data = data;
+    }
 
     public String getBattingStyle() {
         return battingStyle;

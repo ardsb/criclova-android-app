@@ -11,10 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CricLowa">
-        <activity android:name=".View.HomepageActivity"></activity>
-        <activity android:name=".View.SplashActivity" />
+        <activity android:name=".View.PlayerStatisticActivity"></activity>
+        <activity android:name=".View.HomepageActivity" />
         <activity android:name=".View.RegisterActivity" />
-        <activity android:name=".View.PlayerStatisticActivity">
+        <activity android:name=".View.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

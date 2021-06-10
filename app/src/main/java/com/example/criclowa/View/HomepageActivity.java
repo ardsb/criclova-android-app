@@ -60,6 +60,7 @@ public class HomepageActivity extends AppCompatActivity {
     private final static String pid="35320";
     RecyclerView recyclerView,recyclerView2,recyclerView3;
     TextView profileName,profileCountryName;
+
     CircleImageView profile;
 
 
@@ -266,8 +267,7 @@ public class HomepageActivity extends AppCompatActivity {
                     recyclerView3.setAdapter(adapter);
 
 
-//                    String image_url = IMAGE_URL_BASE_PATH + response.body().getWeather().getIcon();
-//                    Picasso.get().load(image_url).into(imgWeather);
+//
 
 
                 } else {
@@ -306,16 +306,16 @@ public class HomepageActivity extends AppCompatActivity {
 
                 if (response.isSuccessful()){
 
-
-                    profile=findViewById(R.id.btnProfile);
-                    profileName = findViewById(R.id.txtProfileName);
-                    profileCountryName= findViewById(R.id.txtProfileCountryName);
-
-
-                    profileName.setText(response.body().getPlayerName());
-                    profileCountryName.setText(response.body().getCountry());
-                    String image_url = response.body().getImageurl();
-                    Picasso.get().load(image_url).into(profile);
+//
+//                    profile=findViewById(R.id.btnProfile);
+//                    profileName = findViewById(R.id.txtProfileName);
+//                    profileCountryName= findViewById(R.id.txtProfileCountryName);
+//
+//
+//                    profileName.setText(response.body().getPlayerName());
+//                    profileCountryName.setText(response.body().getCountry());
+//                    String image_url = response.body().getImageurl();
+//                    Picasso.get().load(image_url).into(profile);
 
 
 
