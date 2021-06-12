@@ -35,7 +35,7 @@
             android:id="@+id/recycler"
             android:layout_margin="10dp"
             android:layout_width="370dp"
-            android:layout_height="150dp"
+            android:layout_height="170dp"
             android:orientation="horizontal"
             tools:listitem="@layout/matches_layout"
             tools:itemCount="10"

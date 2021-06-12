@@ -4,47 +4,57 @@ import com.google.gson.annotations.SerializedName;
 
 public class BattingOutputs {
 
-    @SerializedName("100")
-    public String century;
+    private String id;
 
-    @SerializedName("50")
-    public String halfCentury;
+    private String Matches;
 
-    @SerializedName("St")
-    public String St;
+    private String Innings;
 
-    @SerializedName("Ct")
-    public String Ct;
+    private String RunsBatting;
 
-    @SerializedName("6s")
-    public String Sixes;
+    private String HS;
 
-    @SerializedName("4s")
-    public String fours;
+    private String Ave;
 
-    @SerializedName("SR")
-    public String SR;
+    private String SR;
 
-    @SerializedName("BF")
-    public String BF;
+    private String halfCentury;
 
-    @SerializedName("Ave")
-    public String Ave;
+    private String century;
 
-    @SerializedName("HS")
-    public String HS;
+    private String Sixes;
 
-    @SerializedName("Runs")
-    public String RunsBatting;
+    private String fours;
 
-    @SerializedName("NO")
-    public String NO;
 
-    @SerializedName("Inns")
-    public String Innings;
+    public BattingOutputs(String id,String matches, String innings, String runsBatting, String HS
+            , String ave, String SR, String halfCentury, String century, String sixes
+            , String fours) {
+        this.id = id;
+        Matches = matches;
+        Innings = innings;
+        RunsBatting = runsBatting;
+        this.HS = HS;
+        Ave = ave;
+        this.SR = SR;
+        this.halfCentury = halfCentury;
+        this.century = century;
 
-    @SerializedName("Mat")
-    public String Matches;
+        Sixes = sixes;
+        this.fours = fours;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public BattingOutputs(){
+
+    }
 
     public String getCentury() {
         return century;
@@ -62,21 +72,6 @@ public class BattingOutputs {
         this.halfCentury = halfCentury;
     }
 
-    public String getSt() {
-        return St;
-    }
-
-    public void setSt(String st) {
-        St = st;
-    }
-
-    public String getCt() {
-        return Ct;
-    }
-
-    public void setCt(String ct) {
-        Ct = ct;
-    }
 
     public String getSixes() {
         return Sixes;
@@ -102,14 +97,6 @@ public class BattingOutputs {
         this.SR = SR;
     }
 
-    public String getBF() {
-        return BF;
-    }
-
-    public void setBF(String BF) {
-        this.BF = BF;
-    }
-
     public String getAve() {
         return Ave;
     }
@@ -132,14 +119,6 @@ public class BattingOutputs {
 
     public void setRunsBatting(String runsBatting) {
         RunsBatting = runsBatting;
-    }
-
-    public String getNO() {
-        return NO;
-    }
-
-    public void setNO(String NO) {
-        this.NO = NO;
     }
 
     public String getInnings() {

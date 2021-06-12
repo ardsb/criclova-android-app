@@ -29,7 +29,7 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.MatchViewHol
 
             super(v);
 
-            scores = v.findViewById(R.id.txtMatchesOutput);
+//            scores = v.findViewById(R.id.txtMatchesOutput);
         }
     }
 

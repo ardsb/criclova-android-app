@@ -15,6 +15,15 @@ public class Match {
     @SerializedName("title")
     public String title;
 
+    public MatchType matchType;
+
+    public MatchType getMatchType() {
+        return matchType;
+    }
+
+    public void setMatchType(MatchType matchType) {
+        this.matchType = matchType;
+    }
 
     public String getUnique_id() {
         return unique_id;

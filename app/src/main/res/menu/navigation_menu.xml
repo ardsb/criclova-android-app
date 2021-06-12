@@ -9,13 +9,20 @@
     <item
         android:id="@+id/imgHome"
         android:icon="@drawable/ic_baseline_home_24"
-        android:title="Home">
+        android:title="Add A Match">
 
     </item>
     <item
         android:id="@+id/imgLogout"
         android:icon="@drawable/ic_baseline_stop_circle_24"
-        android:title="Logout">
+        android:title="Add Player Details">
+
+    </item>
+
+    <item
+        android:id="@+id/imgShowPlayerDetails"
+        android:icon="@drawable/ic_baseline_stop_circle_24"
+        android:title="Show Player Details">
 
     </item>
     <item

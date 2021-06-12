@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
@@ -16,15 +15,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.criclowa.Adapter.MatchAdapter;
+import com.example.criclowa.Adapter.LiveScoreAdapter;
 import com.example.criclowa.Adapter.NewsAdapter;
 import com.example.criclowa.Adapter.VideosAdapter;
-import com.example.criclowa.Model.Match;
-import com.example.criclowa.Model.MatchList;
+import com.example.criclowa.Model.Matches;
 import com.example.criclowa.Model.PlayerStatistic;
 import com.example.criclowa.Model.SportNews;
 import com.example.criclowa.Model.SportNewsList;
@@ -36,8 +32,13 @@ import com.example.criclowa.Services.ApiClientNews;
 import com.example.criclowa.Services.ApiClientVideos;
 import com.example.criclowa.Services.ApiInterface;
 import com.google.android.material.navigation.NavigationView;
-import com.squareup.picasso.Picasso;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -50,19 +51,19 @@ public class HomepageActivity extends AppCompatActivity {
     private ActionBarDrawerToggle abdt;
     SharedPreferences sharedPreferences;
     String TAG = HomepageActivity.class.getSimpleName();
-    private final static String API_KEY_SCORES="jAOkpmcytOgBLzmtvhzmtfOLbfP2";
-    private final static String API_Key_NEWS ="fa0a460e2ca943f7bd5cf89cf16855cc";
-    private final static String Country="in";
-    private final static String Cat="sports";
-    private final static String API_Key_VIDEOS ="AIzaSyANcGmjuaXKqU3PfhiVdyNo4GBXGFTJZto";
-    private final static String chId="UCkd4takjjF1EGD1TKIK2QiA";
-    private final static String part="snippet,id";
-    private final static String pid="35320";
-    RecyclerView recyclerView,recyclerView2,recyclerView3;
-    TextView profileName,profileCountryName;
+    private final static String API_KEY_SCORES = "jAOkpmcytOgBLzmtvhzmtfOLbfP2";
+    private final static String API_Key_NEWS = "fa0a460e2ca943f7bd5cf89cf16855cc";
+    private final static String Country = "in";
+    private final static String Cat = "sports";
+    private final static String API_Key_VIDEOS = "AIzaSyANcGmjuaXKqU3PfhiVdyNo4GBXGFTJZto";
+    private final static String chId = "UCkd4takjjF1EGD1TKIK2QiA";
+    private final static String part = "snippet,id";
+    private final static String pid = "35320";
+    DatabaseReference myRef;
+    List<Matches> matches;
+    RecyclerView recyclerView, recyclerView2, recyclerView3;
 
     CircleImageView profile;
-
 
 
     @Override
@@ -70,11 +71,17 @@ public class HomepageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("Match Scores");//Database name
+
+
         recyclerView = findViewById(R.id.recycler);
+        matches = new ArrayList<>();
         SnapHelper helper = new LinearSnapHelper();
         helper.attachToRecyclerView(recyclerView);
 
-        getScoreData();
+
+//        getScoreData();
 
         recyclerView2 = findViewById(R.id.recycler2);
         SnapHelper helper2 = new LinearSnapHelper();
@@ -89,21 +96,14 @@ public class HomepageActivity extends AppCompatActivity {
         getMatchVideos();
 
 
-
-
         getPlayerStatistic();
 
 
-
-
-
-
-
         sharedPreferences = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor= sharedPreferences.edit();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        dl = (DrawerLayout)findViewById(R.id.d1);
-        abdt = new ActionBarDrawerToggle(this, dl,R.string.Open, R.string.Close);
+        dl = (DrawerLayout) findViewById(R.id.d1);
+        abdt = new ActionBarDrawerToggle(this, dl, R.string.Open, R.string.Close);
 
         abdt.setDrawerIndicatorEnabled(true);
         dl.addDrawerListener(abdt);
@@ -111,11 +111,11 @@ public class HomepageActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        NavigationView nav_view= (NavigationView)findViewById(R.id.nav_view);
-        nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
+        NavigationView nav_view = (NavigationView) findViewById(R.id.nav_view);
+        nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-              int id =item.getItemId();
+                int id = item.getItemId();
 
                 profile = findViewById(R.id.btnProfile);
                 profile.setOnClickListener(new View.OnClickListener() {
@@ -128,25 +128,30 @@ public class HomepageActivity extends AppCompatActivity {
                 });
 
 
-              if (id ==R.id.imgProfile){
+                if (id == R.id.imgProfile) {
 
-                  Intent mainActivityIntent = new Intent(HomepageActivity.this, PlayerStatisticActivity.class);
-                  startActivity(mainActivityIntent);
+                    Intent mainActivityIntent = new Intent(HomepageActivity.this, PlayerStatisticActivity.class);
+                    startActivity(mainActivityIntent);
 
-              }
-               else if (id ==R.id.imgHome){
+                } else if (id == R.id.imgHome) {
 
-                    Toast.makeText(HomepageActivity.this,"Home",Toast.LENGTH_SHORT).show();
-                }
-                else if (id ==R.id.imgLogout){
+                    Intent mainActivityIntent = new Intent(HomepageActivity.this, AddMatchActivity.class);
+                    startActivity(mainActivityIntent);
+                } else if (id == R.id.imgLogout) {
 
-                  SharedPreferences.Editor editor= sharedPreferences.edit();
-                  editor.clear();
-                  editor.commit();
-//
+                    Intent mainActivityIntent = new Intent(HomepageActivity.this, AddPlayerDetailActivity.class);
+                    startActivity(mainActivityIntent);
 
-                }else if(id ==R.id.imgExit)
-                  finish();
+//                  SharedPreferences.Editor editor= sharedPreferences.edit();
+//                  editor.clear();
+//                  editor.commit();
+                } else if (id == R.id.imgShowPlayerDetails) {
+
+                    Intent mainActivityIntent = new Intent(HomepageActivity.this, DisplayPlayersDetailsActivity.class);
+                    startActivity(mainActivityIntent);
+
+                } else if (id == R.id.imgExit)
+                    finish();
 
                 return true;
             }
@@ -159,61 +164,107 @@ public class HomepageActivity extends AppCompatActivity {
     }
 
 
-    private void getScoreData() {
-        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-
-        Call<MatchList> call = apiInterface.getMatchScore(API_KEY_SCORES);
-
-        ((Call) call).enqueue(new Callback<MatchList>() {
+    @Override
+    protected void onStart() {
+        super.onStart();
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onResponse(Call<MatchList> call, Response<MatchList> response) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                matches.clear();
 
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
 
-                if (response.isSuccessful() && response.body().getData().size() > 0){
-                    List<Match> matche =response.body().getData();
+                    Matches match = postSnapshot.getValue(Matches.class);
 
-
-                    MatchAdapter adapter = new MatchAdapter(matche, R.layout.matches_layout, getApplicationContext());
-
-                    recyclerView.setAdapter(adapter);
-
-
-//                    String image_url = IMAGE_URL_BASE_PATH + response.body().getWeather().getIcon();
-//                    Picasso.get().load(image_url).into(imgWeather);
-
-
-                } else {
-                    Toast.makeText(HomepageActivity.this, response.message(), Toast.LENGTH_SHORT).show();
+                    matches.add(match);
                 }
 
+                if (matches.size() > 0) {
+
+                    LiveScoreAdapter LiveScoreAdapter = new LiveScoreAdapter(HomepageActivity.this, matches);
+
+                    LiveScoreAdapter adapter = new LiveScoreAdapter(HomepageActivity.this, matches);
 
 
+                    recyclerView.setAdapter(adapter);
+                }
             }
 
             @Override
-            public void onFailure(Call<MatchList> call, Throwable t) {
-                Log.e(TAG, String.format("onFailure: %s", t.getMessage()));
-
-
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
             }
-
         });
+    }
+
+
+    private void addingMatches(Matches matches) {
+
+        String id = myRef.push().getKey();
+
+        myRef.child(id).setValue(matches);
+
+        Toast.makeText(this, "The Match has started", Toast.LENGTH_LONG).show();
 
 
     }
 
+//    private void getScoreData() {
+//        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+//
+//        Call<MatchList> call = apiInterface.getMatchScore(API_KEY_SCORES);
+//
+//        ((Call) call).enqueue(new Callback<MatchList>() {
+//            @Override
+//            public void onResponse(Call<MatchList> call, Response<MatchList> response) {
+//
+//
+//                if (response.isSuccessful() && response.body().getData().size() > 0){
+//                    List<Match> matche =response.body().getData();
+//
+//
+//                    MatchAdapter adapter = new MatchAdapter(matche, R.layout.matches_layout, getApplicationContext());
+//
+//                    recyclerView.setAdapter(adapter);
+//
+//
+////                    String image_url = IMAGE_URL_BASE_PATH + response.body().getWeather().getIcon();
+////                    Picasso.get().load(image_url).into(imgWeather);
+//
+//
+//                } else {
+//                    Toast.makeText(HomepageActivity.this, response.message(), Toast.LENGTH_SHORT).show();
+//                }
+//
+//
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<MatchList> call, Throwable t) {
+//                Log.e(TAG, String.format("onFailure: %s", t.getMessage()));
+//
+//
+//            }
+//
+//        });
+
+
+//    }
+
     private void getMatchNews() {
         ApiInterface apiInterface = ApiClientNews.getClient().create(ApiInterface.class);
 
-        Call<SportNewsList> call = apiInterface.getMatchNews(Country,Cat,API_Key_NEWS);
+        Call<SportNewsList> call = apiInterface.getMatchNews(Country, Cat, API_Key_NEWS);
 
         ((Call) call).enqueue(new Callback<SportNewsList>() {
             @Override
             public void onResponse(Call<SportNewsList> call, Response<SportNewsList> response) {
 
 
-                if (response.isSuccessful() && response.body().getArticle().size() > 0){
-                    List<SportNews> News =response.body().getArticle();
+                if (response.isSuccessful() && response.body().getArticle().size() > 0) {
+                    List<SportNews> News = response.body().getArticle();
 
 
                     NewsAdapter adapter = new NewsAdapter(News, R.layout.news_layout, getApplicationContext());
@@ -230,7 +281,6 @@ public class HomepageActivity extends AppCompatActivity {
                 }
 
 
-
             }
 
             @Override
@@ -243,13 +293,12 @@ public class HomepageActivity extends AppCompatActivity {
         });
 
 
-
     }
 
     private void getMatchVideos() {
         ApiInterface apiInterface = ApiClientVideos.getClient().create(ApiInterface.class);
 
-        Call<SportVideosResponse> call = apiInterface.getMatchVideos(API_Key_VIDEOS,chId,part);
+        Call<SportVideosResponse> call = apiInterface.getMatchVideos(API_Key_VIDEOS, chId, part);
 
         ((Call) call).enqueue(new Callback<SportVideosResponse>() {
             @Override
@@ -257,7 +306,7 @@ public class HomepageActivity extends AppCompatActivity {
 
 
                 SportVideosResponse body = response.body();
-                if (response.isSuccessful() && body.getItem().size() > 0){
+                if (response.isSuccessful() && body.getItem().size() > 0) {
                     List<Item> videos = body.getItem();
 
                     Log.e(TAG, String.format("OnSuccess: %s", body.getItem()));
@@ -276,7 +325,6 @@ public class HomepageActivity extends AppCompatActivity {
                 }
 
 
-
             }
 
             @Override
@@ -289,22 +337,20 @@ public class HomepageActivity extends AppCompatActivity {
         });
 
 
-
     }
 
 
     private void getPlayerStatistic() {
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
-        Call<PlayerStatistic> call = apiInterface.getPlayerStatistic(API_KEY_SCORES,pid);
+        Call<PlayerStatistic> call = apiInterface.getPlayerStatistic(API_KEY_SCORES, pid);
 
         ((Call) call).enqueue(new Callback<PlayerStatistic>() {
             @Override
             public void onResponse(Call<PlayerStatistic> call, Response<PlayerStatistic> response) {
 
 
-
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
 
 //
 //                    profile=findViewById(R.id.btnProfile);
@@ -317,14 +363,22 @@ public class HomepageActivity extends AppCompatActivity {
 //                    String image_url = response.body().getImageurl();
 //                    Picasso.get().load(image_url).into(profile);
 
-
+//                    Match match = new Match();
+//                    switch (match.getMatchType()) {
+//
+//                        case T20:
+//                            break;
+//                        case T10:
+//                            break;
+//                        case ODI:
+//                            break;
+//                    }
 
 
                 } else {
                     Log.e(TAG, String.format("OnFailure: %s", response.message()));
                     Toast.makeText(HomepageActivity.this, response.message(), Toast.LENGTH_SHORT).show();
                 }
-
 
 
             }
@@ -339,9 +393,7 @@ public class HomepageActivity extends AppCompatActivity {
         });
 
 
-
     }
-
 
 
     @Override
