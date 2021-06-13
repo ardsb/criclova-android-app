@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.criclowa.Model.BattingOutputs;
+import com.example.criclowa.Model.BowlingOutputs;
 import com.example.criclowa.Model.PlayerDetails;
 import com.example.criclowa.R;
 import com.google.firebase.database.DatabaseReference;
@@ -24,12 +25,18 @@ public class DisplayPlayersProfileDetailActivity extends AppCompatActivity {
     TextView txtProfileNameStatisticPassing, txtProfileAgePassing, txtProfileBornPassing
             , txtProfileCountryNameStatisticPassing, txtPlayingRolePassing, txtMajorTeamPassing
             , txtBattingStylePassing, txtBowlingStylePassing;
+
     TextView txtMatchesStatistic,txtInningsStatistic,txtRunsStaistic,txtHSStatistic
                 ,txtAverageStatistic,txtStrikeRateStatistic,txtHalfCenturyStatistic,txtCenturyStatistic
             ,txtSixesStatistic,txtfoursStatistic;;
+
+    TextView txtMatchesStatisticBowling,txtInningsStatisticBowling,txtBallsStaistic
+            ,txtWicketsStatistic,txtFourWicketsHaulStatistic,txtAverageStatisticBowling
+            ,txtFiveWicketsHaulStatistic,txtTenWicketsHaulStatistic,txtEconStatistic
+            ,txtSixesStatisticBowling,txtfoursStatisticBowling;;
     ImageView imgProfile;
     DatabaseReference myRef;
-    Button btnAddStatistic;
+    Button btnAddStatistic,btnAddStatisticBowling;
 
     private List<PlayerDetails> dataSet;
     private Context context;
@@ -44,7 +51,7 @@ public class DisplayPlayersProfileDetailActivity extends AppCompatActivity {
         myRef = database.getReference("player-details");
 
         PlayerDetails playerDetails = (PlayerDetails) getIntent().getSerializableExtra("Player Details");
-        myRef = FirebaseDatabase.getInstance().getReference("batting-statistic").child(playerDetails.getId());
+        myRef = FirebaseDatabase.getInstance().getReference("bowling&batting-statistic").child(playerDetails.getId());
 
         txtProfileNameStatisticPassing = findViewById(R.id.txtProfileNameStatisticPassing);
         txtProfileAgePassing = findViewById(R.id.txtProfileAgePassing);
@@ -75,6 +82,8 @@ public class DisplayPlayersProfileDetailActivity extends AppCompatActivity {
         txtSixesStatistic=findViewById(R.id.txtSixesStatistic);
         txtfoursStatistic=findViewById(R.id.txtfoursStatistic);
 
+
+
         btnAddStatistic=findViewById(R.id.btnAddBatting);
         btnAddStatistic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,6 +108,38 @@ public class DisplayPlayersProfileDetailActivity extends AppCompatActivity {
         });
 
 
+        txtMatchesStatisticBowling=findViewById(R.id.txtMatchesStatisticBowling);
+        txtInningsStatisticBowling=findViewById(R.id.txtInningsStatisticBowling);
+        txtBallsStaistic=findViewById(R.id.txtBallsStaistic);
+        txtWicketsStatistic=findViewById(R.id.txtWicketsStatistic);
+        txtFourWicketsHaulStatistic=findViewById(R.id.txtFourWicketsHaulStatistic);
+        txtFiveWicketsHaulStatistic=findViewById(R.id.txtFiveWicketsHaulStatistic);
+        txtAverageStatisticBowling=findViewById(R.id.txtAverageStatisticBowling);
+        txtEconStatistic=findViewById(R.id.txtEconStatistic);
+
+
+        btnAddStatisticBowling=findViewById(R.id.btnAddBowling);
+        btnAddStatisticBowling.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                BowlingOutputs bowlingOutputs = new BowlingOutputs();
+
+                bowlingOutputs.setMatches(txtMatchesStatisticBowling.getText().toString().trim());
+                bowlingOutputs.setInnings(txtInningsStatistic.getText().toString().trim());
+                bowlingOutputs.setBalls(txtBallsStaistic.getText().toString().trim());
+                bowlingOutputs.setWkts(txtWicketsStatistic.getText().toString().trim());
+                bowlingOutputs.setFourWicketsHaul(txtFourWicketsHaulStatistic.getText().toString().trim());
+                bowlingOutputs.setFiveWicketsHaul(txtFiveWicketsHaulStatistic.getText().toString().trim());
+                bowlingOutputs.setAve(txtAverageStatisticBowling.getText().toString().trim());
+                bowlingOutputs.setEcon(txtEconStatistic.getText().toString().trim());
+
+                saveBowlingStatistic(bowlingOutputs);
+            }
+        });
+
+
     }
 
 
@@ -111,13 +152,17 @@ public class DisplayPlayersProfileDetailActivity extends AppCompatActivity {
 
 
     }
-    public boolean onOptionsItemSelected(MenuItem item) {
-//      Back action
-        onBackPressed();
-        return true;
+
+    public void saveBowlingStatistic(BowlingOutputs bowlingOutputs){
+
+        String id = myRef.push().getKey();
+        bowlingOutputs.setId(id);
+        myRef.child(id).setValue(bowlingOutputs);
+        Toast.makeText(this,"Bowling statistic has added",Toast.LENGTH_LONG).show();
 
 
     }
+
 
 
 }
