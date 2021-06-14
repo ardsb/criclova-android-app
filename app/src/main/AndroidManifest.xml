@@ -17,9 +17,9 @@
         <activity android:name=".View.AddPlayerDetailActivity" />
         <activity android:name=".View.AddMatchActivity" />
         <activity android:name=".View.PlayerStatisticActivity" />
-        <activity android:name=".View.HomepageActivity" />
+        <activity android:name=".View.SplashActivity" />
         <activity android:name=".View.RegisterActivity" />
-        <activity android:name=".View.SplashActivity">
+        <activity android:name=".View.HomepageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

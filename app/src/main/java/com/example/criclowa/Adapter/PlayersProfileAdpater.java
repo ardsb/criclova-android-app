@@ -2,6 +2,7 @@ package com.example.criclowa.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +19,11 @@ import com.example.criclowa.R;
 import com.example.criclowa.View.DisplayPlayersProfileDetailActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PlayersProfileAdpater extends RecyclerView.Adapter<PlayersProfileAdpater.ViewHolder> {
     private List<PlayerDetails> dataSet;
@@ -30,7 +34,7 @@ public class PlayersProfileAdpater extends RecyclerView.Adapter<PlayersProfileAd
         TextView profileName, profileCountryName,txtProfileAge,txtProfileBorn,txtPlayingRole,txtMajorTeam
                 ,txtBattingStyle,txtBowlingStyle; //For Profile
         Button btnDelete;
-        ImageView imageView;
+       public CircleImageView imageView;
         LinearLayout layout;
 
 
@@ -47,7 +51,7 @@ public class PlayersProfileAdpater extends RecyclerView.Adapter<PlayersProfileAd
             txtBowlingStyle = view.findViewById(R.id.txtBowlingStyleAdmin);
             btnDelete = view.findViewById(R.id.btnDelete);
             layout = view.findViewById(R.id.playerProfileLayout);
-            imageView =view.findViewById(R.id.btnProfileAdmin2);
+            imageView =view.findViewById(R.id.imgProfileImageList);
 
 
 
@@ -71,6 +75,8 @@ public class PlayersProfileAdpater extends RecyclerView.Adapter<PlayersProfileAd
     @Override
     public void onBindViewHolder(PlayersProfileAdpater.ViewHolder viewHolder, final int position) {
 
+        PlayerDetails playerDetails = dataSet.get(position);
+
 
 
         viewHolder.profileName.setText(dataSet.get(position).getPlayerName());
@@ -81,6 +87,12 @@ public class PlayersProfileAdpater extends RecyclerView.Adapter<PlayersProfileAd
         viewHolder.txtMajorTeam.setText(dataSet.get(position).getMajorTeams());
         viewHolder.txtBattingStyle.setText(dataSet.get(position).getBattingStyle());
         viewHolder.txtBowlingStyle.setText(dataSet.get(position).getBowlingStyle());
+
+        String image = playerDetails.getmImageUrl();
+        if (image !=null && !image.trim().equals("")) {
+            Picasso.get()
+                    .load(image).into(viewHolder.imageView);
+        }
 
 
         viewHolder.layout.setOnClickListener(new View.OnClickListener() {

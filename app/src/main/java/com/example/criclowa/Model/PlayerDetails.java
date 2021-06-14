@@ -1,7 +1,5 @@
 package com.example.criclowa.Model;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.io.Serializable;
 
 public class PlayerDetails implements Serializable {
@@ -9,6 +7,8 @@ public class PlayerDetails implements Serializable {
 
 
     public String id;
+
+    public String mImageUrl;
 
     public String playerName;
 
@@ -28,7 +28,7 @@ public class PlayerDetails implements Serializable {
 
 
     public PlayerDetails(String id,String playerName, String currentAge, String born, String country
-            , String playingRole, String majorTeams, String battingStyle, String bowlingStyle) {
+            , String playingRole, String majorTeams, String battingStyle, String bowlingStyle,String imageUrl) {
         this.id = id;
         this.playerName = playerName;
         this.currentAge = currentAge;
@@ -38,14 +38,26 @@ public class PlayerDetails implements Serializable {
         this.majorTeams = majorTeams;
         this.battingStyle = battingStyle;
         this.bowlingStyle = bowlingStyle;
+        this.mImageUrl = imageUrl;
     }
 
     public PlayerDetails(){
 
     }
 
+
+
     public String getId() {
         return id;
+    }
+
+
+    public String getmImageUrl() {
+        return mImageUrl;
+    }
+
+    public void setmImageUrl(String mImageUrl) {
+        this.mImageUrl = mImageUrl;
     }
 
     public void setId(String id) {

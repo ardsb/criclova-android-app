@@ -32,8 +32,7 @@ public class DisplayPlayersProfileDetailActivity extends AppCompatActivity {
 
     TextView txtMatchesStatisticBowling,txtInningsStatisticBowling,txtBallsStaistic
             ,txtWicketsStatistic,txtFourWicketsHaulStatistic,txtAverageStatisticBowling
-            ,txtFiveWicketsHaulStatistic,txtTenWicketsHaulStatistic,txtEconStatistic
-            ,txtSixesStatisticBowling,txtfoursStatisticBowling;;
+            ,txtFiveWicketsHaulStatistic,txtEconStatistic;
     ImageView imgProfile;
     DatabaseReference myRef;
     Button btnAddStatistic,btnAddStatisticBowling;

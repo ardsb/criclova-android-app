@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.AddFoodActivity">
+    tools:context=".View.">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -126,7 +126,7 @@
                         android:background="?attr/colorSecondary"
                         android:text="ADD " />
                     <Button
-                        android:id="@+id/btnView"
+                        android:id="@+id/btnView2"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_gravity="center"
