@@ -83,7 +83,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="?android:colorBackground"
-                        android:text="sss"
                         android:hint="Name" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -100,8 +99,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:background="?android:colorBackground"
-                        android:text="sss"
-
                         android:hint="Age"
                         android:inputType="none" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -114,8 +111,6 @@
                         android:id="@+id/txtPLayersBorn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="sss"
-
                         android:layout_marginTop="20dp"
                         android:background="?android:colorBackground"
                         android:hint="Born" />
@@ -130,8 +125,6 @@
                         android:id="@+id/txtPlayingCountry"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="sss"
-
                         android:layout_marginTop="20dp"
                         android:background="?android:colorBackground"
                         android:hint="Country" />
@@ -146,8 +139,6 @@
                         android:id="@+id/txtPlayerPlayingRole"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="sss"
-
                         android:layout_marginTop="20dp"
                         android:background="?android:colorBackground"
                         android:hint="Playing Role" />
@@ -163,8 +154,6 @@
                         android:id="@+id/txtMajorteam"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="sss"
-
                         android:layout_marginTop="20dp"
                         android:background="?android:colorBackground"
                         android:hint="Major team"
@@ -180,8 +169,6 @@
                     <EditText
                         android:id="@+id/txtPlayerBattingStyle"
                         android:layout_width="match_parent"
-                        android:text="sss"
-
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:background="?android:colorBackground"
@@ -199,8 +186,6 @@
                     <EditText
                         android:id="@+id/txtPlayerBowlingStyle"
                         android:layout_width="match_parent"
-                        android:text="sss"
-
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:background="?android:colorBackground"
