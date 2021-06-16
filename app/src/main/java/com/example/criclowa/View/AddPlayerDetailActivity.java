@@ -38,13 +38,12 @@ public class AddPlayerDetailActivity extends AppCompatActivity {
     DatabaseReference myRef;
     TextView txtPLayersName,txtPLayersAge,txtPLayersBorn,txtPlayingCountry,txtPlayerPlayingRole
             ,txtMajorteam,txtPlayerBattingStyle,txtPlayerBowlingStyle;
-    Button addMatch,btnChooseFile,btnUpload;
+    Button addMatch,btnChooseFile;
 
 
     CircleImageView imageViewProfile;
     StorageReference storageRef;
 
-    private StorageTask uploadTask;
     private String imageUploadUrl;
     private ProgressDialog uploadProgressDialog;
 
@@ -71,14 +70,12 @@ public class AddPlayerDetailActivity extends AppCompatActivity {
         txtPlayerBattingStyle=findViewById(R.id.txtPlayerBattingStyle);
         txtPlayerBowlingStyle=findViewById(R.id.txtPlayerBowlingStyle);
         imageViewProfile=findViewById(R.id.imageViewProfile);
-        btnUpload=findViewById(R.id.btnUploadProfile);
 
-//        mProgressBar=findViewById(R.id.progressBar);
 
 
         uploadProgressDialog = new ProgressDialog(this);
-        uploadProgressDialog.setTitle("Uploading the Image");
-        uploadProgressDialog.setMessage("Please hold tight while we upload your image");
+        uploadProgressDialog.setTitle("Adding a Player");
+        uploadProgressDialog.setMessage("Please hold tight while we upload the players details");
         uploadProgressDialog.setCancelable(false);
         uploadProgressDialog.setCanceledOnTouchOutside(false);
 
@@ -95,14 +92,6 @@ public class AddPlayerDetailActivity extends AppCompatActivity {
         });
 
 
-        btnUpload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-
-            }
-        });
 
         addMatch=findViewById(R.id.btnAdd);
         addMatch.setOnClickListener(new View.OnClickListener() {
@@ -207,7 +196,7 @@ public class AddPlayerDetailActivity extends AppCompatActivity {
                             Uri downloadUri = task.getResult();
                             Log.e("TEST", "then: " + downloadUri.toString());
                             Toast.makeText(AddPlayerDetailActivity.this
-                                    ,"Image has succesfully uploaded", Toast.LENGTH_LONG)
+                                    ,"New Player Has Added", Toast.LENGTH_LONG)
                                     .show();
                             imageUploadUrl = downloadUri.toString();
 
@@ -261,8 +250,5 @@ public class AddPlayerDetailActivity extends AppCompatActivity {
                 ,PlayerBowlingStyle,imageUploadUrl);
 
         myRef.child(id).setValue(playerDetails);
-
-
-        Toast.makeText(this,"New player has added",Toast.LENGTH_SHORT).show();
     }
 }

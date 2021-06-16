@@ -3,21 +3,21 @@
 
     <item
         android:id="@+id/txtAddMatch"
-        android:icon="@drawable/ic_baseline_home_24"
+        android:icon="@drawable/ic_baseline_sports_cricket_24"
         android:title="Add A Match">
 
     </item>
     <item
         android:id="@+id/txtAddPlayerDetails"
-        android:icon="@drawable/ic_baseline_stop_circle_24"
-        android:title="Add Player Details">
+        android:icon="@drawable/ic_baseline_person_add_24"
+        android:title="Add Players">
 
     </item>
 
     <item
         android:id="@+id/txtShowPlayerDetails"
-        android:icon="@drawable/ic_baseline_stop_circle_24"
-        android:title="Show Player Details">
+        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:title="Show Players">
 
     </item>
 
