@@ -9,8 +9,6 @@ public class SportNewsList {
     @SerializedName("articles")
     public List<SportNews> article;
 
-
-
     public List<SportNews> getArticle() {
         return article;
     }

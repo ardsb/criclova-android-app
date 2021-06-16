@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.example.criclowa.Model.PlayerDetails;
 import com.example.criclowa.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -37,9 +39,6 @@ public class DisplayPlayersProfileDetailActivity extends AppCompatActivity {
     DatabaseReference myRef;
     Button btnAddStatistic,btnAddStatisticBowling;
 
-    private List<PlayerDetails> dataSet;
-    private Context context;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,17 +48,23 @@ public class DisplayPlayersProfileDetailActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         myRef = database.getReference("player-details");
 
-        PlayerDetails playerDetails = (PlayerDetails) getIntent().getSerializableExtra("Player Details");
-        myRef = FirebaseDatabase.getInstance().getReference("bowling&batting-statistic").child(playerDetails.getId());
+        PlayerDetails playerDetails = (PlayerDetails) getIntent().getSerializableExtra
+                ("Player Details");
+        myRef = FirebaseDatabase.getInstance().getReference("bowling&batting-statistic")
+                .child(playerDetails.getId());
 
         txtProfileNameStatisticPassing = findViewById(R.id.txtProfileNameStatisticPassing);
         txtProfileAgePassing = findViewById(R.id.txtProfileAgePassing);
         txtProfileBornPassing = findViewById(R.id.txtProfileBornPassing);
-        txtProfileCountryNameStatisticPassing = findViewById(R.id.txtProfileCountryNameStatisticPassing);
+        txtProfileCountryNameStatisticPassing = findViewById
+                (R.id.txtProfileCountryNameStatisticPassing);
         txtPlayingRolePassing = findViewById(R.id.txtPlayingRolePassing);
         txtMajorTeamPassing = findViewById(R.id.txtMajorTeamPassing);
         txtBattingStylePassing = findViewById(R.id.txtBattingStylePassing);
         txtBowlingStylePassing = findViewById(R.id.txtBowlingStylePassing);
+        imgProfile = findViewById(R.id.imgProfileDisplayList);
+
+
 
         txtProfileNameStatisticPassing.setText(playerDetails.getPlayerName());
         txtProfileAgePassing.setText(playerDetails.getCurrentAge());
@@ -69,6 +74,11 @@ public class DisplayPlayersProfileDetailActivity extends AppCompatActivity {
         txtMajorTeamPassing.setText(playerDetails.getMajorTeams());
         txtBattingStylePassing.setText(playerDetails.getBattingStyle());
         txtBowlingStylePassing.setText(playerDetails.getBowlingStyle());
+        Picasso.get()
+                .load(playerDetails.getmImageUrl())
+                .fit()
+                .centerCrop()
+                .into(imgProfile);
 
         txtMatchesStatistic=findViewById(R.id.txtMatchesStatistic);
         txtInningsStatistic=findViewById(R.id.txtInningsStatistic);
@@ -129,8 +139,10 @@ public class DisplayPlayersProfileDetailActivity extends AppCompatActivity {
                 bowlingOutputs.setInnings(txtInningsStatistic.getText().toString().trim());
                 bowlingOutputs.setBalls(txtBallsStaistic.getText().toString().trim());
                 bowlingOutputs.setWkts(txtWicketsStatistic.getText().toString().trim());
-                bowlingOutputs.setFourWicketsHaul(txtFourWicketsHaulStatistic.getText().toString().trim());
-                bowlingOutputs.setFiveWicketsHaul(txtFiveWicketsHaulStatistic.getText().toString().trim());
+                bowlingOutputs.setFourWicketsHaul(txtFourWicketsHaulStatistic.getText().toString()
+                        .trim());
+                bowlingOutputs.setFiveWicketsHaul(txtFiveWicketsHaulStatistic.getText().toString()
+                        .trim());
                 bowlingOutputs.setAve(txtAverageStatisticBowling.getText().toString().trim());
                 bowlingOutputs.setEcon(txtEconStatistic.getText().toString().trim());
 

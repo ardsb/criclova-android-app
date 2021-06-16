@@ -11,12 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CricLowa">
-        <activity android:name=".View.AddBattingStatisticActivity"></activity>
         <activity android:name=".View.DisplayPlayersDetailsActivity" />
         <activity android:name=".View.DisplayPlayersProfileDetailActivity" />
         <activity android:name=".View.AddPlayerDetailActivity" />
         <activity android:name=".View.AddMatchActivity" />
-        <activity android:name=".View.PlayerStatisticActivity" />
         <activity android:name=".View.SplashActivity" />
         <activity android:name=".View.RegisterActivity" />
         <activity android:name=".View.HomepageActivity">

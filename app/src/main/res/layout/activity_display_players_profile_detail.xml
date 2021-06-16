@@ -12,18 +12,21 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imgProfileDisplayList"
-            android:layout_width="130dp"
-            android:layout_height="150dp"
-            android:layout_margin="10dp"
-            android:src="@drawable/arkam"
-            app:civ_border_width="2dp"
-            app:civ_border_color="#FF000000"
-            app:srcCompat="@drawable/arkam" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-
-
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgProfileDisplayList"
+                android:layout_width="130dp"
+                android:layout_height="150dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/arkam"
+                app:civ_border_width="2dp"
+                app:civ_border_color="#FF000000"
+                app:srcCompat="@drawable/arkam" />
+        </LinearLayout>
 
         <ScrollView
             android:layout_width="match_parent"
@@ -189,7 +192,6 @@
 
                 </LinearLayout>
 
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -240,9 +242,6 @@
                         android:text="Right-arm offbreak, Legbreak googly" />
 
                 </LinearLayout>
-
-
-
             </LinearLayout>
         </ScrollView>
 
@@ -447,22 +446,11 @@
                         android:layout_gravity="center"
                         android:background="?attr/colorSecondary"
                         android:text="ADD " />
-                    <Button
-                        android:id="@+id/btnView2"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="20dp"
-                        android:background="?attr/colorSecondary"
-                        android:text="View " />
-
                 </LinearLayout>
-
             </LinearLayout>
-
         </LinearLayout>
-
     </ScrollView>
+
     <ScrollView
         android:layout_width="200dp"
         android:layout_height="wrap_content"
@@ -630,15 +618,6 @@
                         android:layout_gravity="center"
                         android:background="?attr/colorSecondary"
                         android:text="ADD " />
-                    <Button
-                        android:id="@+id/btnViewBowling"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="20dp"
-                        android:background="?attr/colorSecondary"
-                        android:text="View " />
-
                 </LinearLayout>
 
             </LinearLayout>
@@ -648,7 +627,4 @@
     </ScrollView>
 
 </LinearLayout>
-
-
-
 </LinearLayout>

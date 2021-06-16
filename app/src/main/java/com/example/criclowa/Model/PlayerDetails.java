@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 public class PlayerDetails implements Serializable {
 
-
-
     public String id;
 
     public String mImageUrl;
@@ -28,7 +26,8 @@ public class PlayerDetails implements Serializable {
 
 
     public PlayerDetails(String id,String playerName, String currentAge, String born, String country
-            , String playingRole, String majorTeams, String battingStyle, String bowlingStyle,String imageUrl) {
+            , String playingRole, String majorTeams, String battingStyle, String bowlingStyle
+            ,String imageUrl) {
         this.id = id;
         this.playerName = playerName;
         this.currentAge = currentAge;
@@ -44,9 +43,6 @@ public class PlayerDetails implements Serializable {
     public PlayerDetails(){
 
     }
-
-
-
     public String getId() {
         return id;
     }

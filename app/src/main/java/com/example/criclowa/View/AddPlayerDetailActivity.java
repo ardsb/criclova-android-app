@@ -4,10 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -25,6 +27,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
@@ -37,13 +40,13 @@ public class AddPlayerDetailActivity extends AppCompatActivity {
             ,txtMajorteam,txtPlayerBattingStyle,txtPlayerBowlingStyle;
     Button addMatch,btnChooseFile,btnUpload;
 
-    ProgressBar mProgressBar;
 
     CircleImageView imageViewProfile;
     StorageReference storageRef;
 
     private StorageTask uploadTask;
     private String imageUploadUrl;
+    private ProgressDialog uploadProgressDialog;
 
     public Uri imageUri;
     @Override
@@ -68,10 +71,21 @@ public class AddPlayerDetailActivity extends AppCompatActivity {
         txtPlayerBattingStyle=findViewById(R.id.txtPlayerBattingStyle);
         txtPlayerBowlingStyle=findViewById(R.id.txtPlayerBowlingStyle);
         imageViewProfile=findViewById(R.id.imageViewProfile);
-        btnUpload=findViewById(R.id.btnViewAddProfile);
-        btnChooseFile=findViewById(R.id.btnChooseFile);
+        btnUpload=findViewById(R.id.btnUploadProfile);
 
-//        mProgressBar=findViewById(R.id.progressBar2);
+//        mProgressBar=findViewById(R.id.progressBar);
+
+
+        uploadProgressDialog = new ProgressDialog(this);
+        uploadProgressDialog.setTitle("Uploading the Image");
+        uploadProgressDialog.setMessage("Please hold tight while we upload your image");
+        uploadProgressDialog.setCancelable(false);
+        uploadProgressDialog.setCanceledOnTouchOutside(false);
+
+
+
+
+        btnChooseFile=findViewById(R.id.btnChooseFile);
 
         btnChooseFile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,59 +99,51 @@ public class AddPlayerDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (uploadTask !=null && uploadTask.isInProgress()){
 
-                    Toast.makeText(AddPlayerDetailActivity.this,"Upload in progress",Toast.LENGTH_LONG).show();
-                }else{
-
-                    fileUploader();
-                }
 
             }
         });
-
-
-
-
 
         addMatch=findViewById(R.id.btnAdd);
         addMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String PLayersName = txtPLayersName.getText().toString().trim();
-                String PLayersAge = txtPLayersAge.getText().toString().trim();
-                String PLayersBorn = txtPLayersBorn.getText().toString().trim();
-                String PlayingCountry = txtPlayingCountry.getText().toString().trim();
-                String PlayerPlayingRole = txtPlayerPlayingRole.getText().toString().trim();
-                String Majorteam = txtMajorteam.getText().toString().trim();
-                String PlayerBattingStyle = txtPlayerBattingStyle.getText().toString().trim();
-                String PlayerBowlingStyle = txtPlayerBowlingStyle.getText().toString().trim();
 
+                fileUploader();
 
-
-                if(!TextUtils.isEmpty(PLayersName) && !TextUtils.isEmpty(PLayersAge)
-                        && !TextUtils.isEmpty(PLayersBorn)&& !TextUtils.isEmpty(PlayingCountry)
-                        && !TextUtils.isEmpty(PlayerPlayingRole) && !TextUtils.isEmpty(Majorteam)
-                        && !TextUtils.isEmpty(PlayerBattingStyle)
-                        && !TextUtils.isEmpty(PlayerBowlingStyle)  ){
-
-                    addMatch(PLayersName,PLayersAge,PLayersBorn,PlayingCountry,PlayerPlayingRole,
-                            Majorteam,PlayerBattingStyle,PlayerBowlingStyle);
-
-                    fileUploader();
-
-
-                }else {
-
-                    Toast.makeText(getApplicationContext(),"Player details cannot be empty"
-                            ,Toast.LENGTH_SHORT).show();
-                }
 
             }
-
-
         });
 
+    }
+
+    private void createPlayerOnFirebase(){
+        String PLayersName = txtPLayersName.getText().toString().trim();
+        String PLayersAge = txtPLayersAge.getText().toString().trim();
+        String PLayersBorn = txtPLayersBorn.getText().toString().trim();
+        String PlayingCountry = txtPlayingCountry.getText().toString().trim();
+        String PlayerPlayingRole = txtPlayerPlayingRole.getText().toString().trim();
+        String Majorteam = txtMajorteam.getText().toString().trim();
+        String PlayerBattingStyle = txtPlayerBattingStyle.getText().toString().trim();
+        String PlayerBowlingStyle = txtPlayerBowlingStyle.getText().toString().trim();
+
+
+
+        if(!TextUtils.isEmpty(PLayersName) && !TextUtils.isEmpty(PLayersAge)
+                && !TextUtils.isEmpty(PLayersBorn)&& !TextUtils.isEmpty(PlayingCountry)
+                && !TextUtils.isEmpty(PlayerPlayingRole) && !TextUtils.isEmpty(Majorteam)
+                && !TextUtils.isEmpty(PlayerBattingStyle)
+                && !TextUtils.isEmpty(PlayerBowlingStyle)  ){
+
+            addMatch(PLayersName,PLayersAge,PLayersBorn,PlayingCountry,PlayerPlayingRole,
+                    Majorteam,PlayerBattingStyle,PlayerBowlingStyle);
+
+
+        }else {
+
+            Toast.makeText(getApplicationContext(),"Player details cannot be empty"
+                    ,Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -165,14 +171,21 @@ public class AddPlayerDetailActivity extends AppCompatActivity {
     public void fileUploader(){
 
         if (imageUri !=null) {
-            StorageReference storageReference = storageRef.child(System.currentTimeMillis() + "." + getExtention(imageUri));
+            StorageReference storageReference = storageRef.child(System.currentTimeMillis()
+                    + "." + getExtention(imageUri));
 
             if (imageUri != null)
             {
-                storageReference.putFile(imageUri).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>()
+                if (!uploadProgressDialog.isShowing()) {
+                    uploadProgressDialog.show();
+                }
+
+                storageReference.putFile(imageUri).continueWithTask(new Continuation<UploadTask
+                        .TaskSnapshot, Task<Uri>>()
                 {
                     @Override
-                    public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception
+                    public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task)
+                            throws Exception
                     {
                         if (!task.isSuccessful())
                         {
@@ -185,55 +198,45 @@ public class AddPlayerDetailActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Uri> task)
                     {
+                        if (uploadProgressDialog.isShowing()) {
+                            uploadProgressDialog.hide();
+                        }
+
                         if (task.isSuccessful())
                         {
                             Uri downloadUri = task.getResult();
                             Log.e("TEST", "then: " + downloadUri.toString());
-                            Toast.makeText(AddPlayerDetailActivity.this, "Image has succesfully uploaded", Toast.LENGTH_LONG).show();
+                            Toast.makeText(AddPlayerDetailActivity.this
+                                    ,"Image has succesfully uploaded", Toast.LENGTH_LONG)
+                                    .show();
                             imageUploadUrl = downloadUri.toString();
-                        } else
+
+                            createPlayerOnFirebase();
+
+
+                        }else
+
                         {
-                            Toast.makeText(getApplicationContext(), "upload failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+
+                            Toast.makeText(getApplicationContext(), "upload failed: "
+                                    + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
+
+
                     }
+
+
                 });
+
+
             }
-           /* uploadTask = storageReference.putFile(imageView)
 
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
-                            // ...
-                            Handler handler = new Handler();
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    mProgressBar.setProgress(0);
-                                }
-                            }, 5000);
-
-                           *//* PlayerDetails playerDetails = new PlayerDetails(taskSnapshot.getUploadSessionUri().toString(),
-                                    txtPLayersAge.getText().toString().trim());
-                            String UploadId = myRef2.push().getKey();
-                            myRef2.child(UploadId).setValue(playerDetails);*//*
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception exception) {
-                            // Handle unsuccessful uploads
-
-                        }
-                    }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                            double progress = (100.0 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
-                            mProgressBar.setProgress((int) progress);
-                        }
-                    });*/
 
         }else {
 
+            if (uploadProgressDialog.isShowing()) {
+                uploadProgressDialog.hide();
+            }
             Toast.makeText(this,"No file selected",Toast.LENGTH_LONG).show();
         }
 
@@ -247,13 +250,15 @@ public class AddPlayerDetailActivity extends AppCompatActivity {
         startActivityForResult(intent,1);
     }
 
-    public void addMatch( String PLayersName, String PLayersAge, String PLayersBorn,String PlayingCountry
-            ,String PlayerPlayingRole,String Majorteam,String PlayerBattingStyle,String PlayerBowlingStyle){
+    public void addMatch( String PLayersName, String PLayersAge, String PLayersBorn
+            ,String PlayingCountry,String PlayerPlayingRole,String Majorteam
+            ,String PlayerBattingStyle,String PlayerBowlingStyle){
 
 
         String id = myRef.push().getKey();
-        PlayerDetails playerDetails = new PlayerDetails (id, PLayersName,PLayersAge,PLayersBorn,PlayingCountry
-                ,PlayerPlayingRole, Majorteam,PlayerBattingStyle, PlayerBowlingStyle,imageUploadUrl);
+        PlayerDetails playerDetails = new PlayerDetails (id, PLayersName,PLayersAge
+                ,PLayersBorn,PlayingCountry,PlayerPlayingRole, Majorteam,PlayerBattingStyle
+                ,PlayerBowlingStyle,imageUploadUrl);
 
         myRef.child(id).setValue(playerDetails);
 

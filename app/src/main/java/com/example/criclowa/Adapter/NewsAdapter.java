@@ -37,13 +37,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
             description=v.findViewById(R.id.txtDescription);
             newsPoster=v.findViewById(R.id.imgPoster);
             moreInfo=v.findViewById(R.id.btnMoreInfo);
-//
-//            moreInfo.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                moreInfo.setMovementMethod(LinkMovementMethod.getInstance());
-//                }
-//            });
+
         }
     }
 
@@ -59,7 +53,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     @Override
     public NewsAdapter.NewsViewHolder onCreateViewHolder(ViewGroup parent,
                                                            int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.news_layout, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.news_layout, parent,
+                false);
         return new NewsAdapter.NewsViewHolder(view);
     }
 

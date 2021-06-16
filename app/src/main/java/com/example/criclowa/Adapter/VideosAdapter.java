@@ -25,9 +25,6 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosAdapter.VideosView
     private int rowLayout;
     private Context context;
 
-
-
-
     public static class VideosViewHolder extends RecyclerView.ViewHolder {
         TextView title,description;
         ImageView VideoPoster;
@@ -39,9 +36,6 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosAdapter.VideosView
             title = v.findViewById(R.id.txtVideoTitle);
             description =v.findViewById(R.id.txtVideoDescription);
             VideoPoster =v.findViewById(R.id.imgVideoPoster);
-
-
-
         }
     }
 
@@ -49,20 +43,19 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosAdapter.VideosView
         this.items = sportVideos;
         this.rowLayout = rowLayout;
         this.context = context;
-
-
-
     }
 
     @Override
     public VideosAdapter.VideosViewHolder onCreateViewHolder(ViewGroup parent,
                                                          int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.videos_layout, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.videos_layout
+                , parent, false);
         return new VideosAdapter.VideosViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull VideosAdapter.VideosViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull VideosAdapter.VideosViewHolder holder
+            , final int position) {
 
         String item= items.get(position).getSnippet().getTitle();
         holder.title.setText(items.get(position).getSnippet().getTitle());
@@ -72,8 +65,6 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosAdapter.VideosView
 
         String image_url =items.get(position).getSnippet().getThumbnails().getMedium().getUrl();
         Picasso.get().load(image_url).into(holder.VideoPoster);
-
-
 
     }
 

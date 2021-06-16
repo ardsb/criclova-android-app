@@ -1,6 +1,5 @@
 package com.example.criclowa.Model;
 
-import com.google.gson.annotations.SerializedName;
 
 public class BattingOutputs {
 

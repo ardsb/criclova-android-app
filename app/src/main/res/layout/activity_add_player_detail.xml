@@ -57,11 +57,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="CHOOSE AN IMAGE "
-                        app:icon="@drawable/ic_baseline_add_photo_alternate_24"></Button>
+                        app:icon="@drawable/ic_baseline_add_photo_alternate_24">
 
-
-
-
+                    </Button>
                 </LinearLayout>
 
 
@@ -85,6 +83,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="?android:colorBackground"
+                        android:text="sss"
                         android:hint="Name" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -101,6 +100,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:background="?android:colorBackground"
+                        android:text="sss"
+
                         android:hint="Age"
                         android:inputType="none" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -113,6 +114,8 @@
                         android:id="@+id/txtPLayersBorn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="sss"
+
                         android:layout_marginTop="20dp"
                         android:background="?android:colorBackground"
                         android:hint="Born" />
@@ -127,6 +130,8 @@
                         android:id="@+id/txtPlayingCountry"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="sss"
+
                         android:layout_marginTop="20dp"
                         android:background="?android:colorBackground"
                         android:hint="Country" />
@@ -141,6 +146,8 @@
                         android:id="@+id/txtPlayerPlayingRole"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="sss"
+
                         android:layout_marginTop="20dp"
                         android:background="?android:colorBackground"
                         android:hint="Playing Role" />
@@ -156,6 +163,8 @@
                         android:id="@+id/txtMajorteam"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="sss"
+
                         android:layout_marginTop="20dp"
                         android:background="?android:colorBackground"
                         android:hint="Major team"
@@ -171,10 +180,14 @@
                     <EditText
                         android:id="@+id/txtPlayerBattingStyle"
                         android:layout_width="match_parent"
+                        android:text="sss"
+
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:background="?android:colorBackground"
                         android:hint="Batting Style" />
+
+
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -186,6 +199,8 @@
                     <EditText
                         android:id="@+id/txtPlayerBowlingStyle"
                         android:layout_width="match_parent"
+                        android:text="sss"
+
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:background="?android:colorBackground"
@@ -205,25 +220,25 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.9">
 
+
+
+
+                    <Button
+                        android:id="@+id/btnUploadProfile"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:background="?attr/colorSecondary"
+                        android:text="Upload the image " />
+
                     <Button
                         android:id="@+id/btnAdd"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:background="?attr/colorSecondary"
-                        android:text="ADD " />
-
-                    <Button
-                        android:id="@+id/btnViewAddProfile"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
                         android:layout_marginTop="20dp"
+                        android:layout_gravity="center"
                         android:background="?attr/colorSecondary"
-                        android:text="View " />
-
-
-
+                        android:text="ADD the details " />
                 </LinearLayout>
 
             </LinearLayout>

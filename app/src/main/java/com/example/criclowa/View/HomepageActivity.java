@@ -14,7 +14,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.example.criclowa.Adapter.LiveScoreAdapter;
@@ -26,7 +25,6 @@ import com.example.criclowa.Model.SportNewsList;
 import com.example.criclowa.Model.Item;
 import com.example.criclowa.Model.SportVideosResponse;
 import com.example.criclowa.R;
-import com.example.criclowa.Services.ApiClient;
 import com.example.criclowa.Services.ApiClientNews;
 import com.example.criclowa.Services.ApiClientVideos;
 import com.example.criclowa.Services.ApiInterface;
@@ -40,7 +38,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -60,7 +57,6 @@ public class HomepageActivity extends AppCompatActivity {
     List<Matches> matches;
     RecyclerView recyclerView, recyclerView2, recyclerView3;
 
-    CircleImageView profile;
 
 
     @Override
@@ -77,9 +73,7 @@ public class HomepageActivity extends AppCompatActivity {
         SnapHelper helper = new LinearSnapHelper();
         helper.attachToRecyclerView(recyclerView);
 
-
-//        getScoreData();
-
+        
         recyclerView2 = findViewById(R.id.recycler2);
         SnapHelper helper2 = new LinearSnapHelper();
         helper2.attachToRecyclerView(recyclerView2);
@@ -108,53 +102,47 @@ public class HomepageActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         NavigationView nav_view = (NavigationView) findViewById(R.id.nav_view);
-        nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        nav_view.setNavigationItemSelectedListener(new NavigationView
+                .OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
 
-                profile = findViewById(R.id.btnProfile);
-                profile.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        Intent mainActivityIntent = new Intent(HomepageActivity.this, PlayerStatisticActivity.class);
-                        startActivity(mainActivityIntent);
-                    }
-                });
 
 
-                if (id == R.id.imgProfile) {
+               
 
-                    Intent mainActivityIntent = new Intent(HomepageActivity.this, PlayerStatisticActivity.class);
+                if (id == R.id.txtAddMatch) {
+
+                    Intent mainActivityIntent = new Intent(HomepageActivity.this
+                            ,AddMatchActivity.class);
+                    startActivity(mainActivityIntent);
+                } else if (id == R.id.txtAddPlayerDetails) {
+
+                    Intent mainActivityIntent = new Intent(HomepageActivity.this
+                            ,AddPlayerDetailActivity.class);
                     startActivity(mainActivityIntent);
 
-                } else if (id == R.id.imgHome) {
 
-                    Intent mainActivityIntent = new Intent(HomepageActivity.this, AddMatchActivity.class);
-                    startActivity(mainActivityIntent);
-                } else if (id == R.id.imgLogout) {
+                } else if (id == R.id.txtShowPlayerDetails) {
 
-                    Intent mainActivityIntent = new Intent(HomepageActivity.this, AddPlayerDetailActivity.class);
+                    Intent mainActivityIntent = new Intent(HomepageActivity.this
+                            ,DisplayPlayersDetailsActivity.class);
                     startActivity(mainActivityIntent);
 
-//                  SharedPreferences.Editor editor= sharedPreferences.edit();
-//                  editor.clear();
-//                  editor.commit();
-                } else if (id == R.id.imgShowPlayerDetails) {
+                }else if (id == R.id.txtLogout){
+                    SharedPreferences.Editor editor= sharedPreferences.edit();
+                    editor.clear();
+                    editor.commit();
 
-                    Intent mainActivityIntent = new Intent(HomepageActivity.this, DisplayPlayersDetailsActivity.class);
-                    startActivity(mainActivityIntent);
-
-                } else if (id == R.id.imgExit)
+                } else if (id == R.id.txtExit)
                     finish();
 
                 return true;
             }
         });
 
-//        recyclerView = findViewById(R.id.recycler);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//
 
 
     }
@@ -177,9 +165,11 @@ public class HomepageActivity extends AppCompatActivity {
 
                 if (matches.size() > 0) {
 
-                    LiveScoreAdapter LiveScoreAdapter = new LiveScoreAdapter(HomepageActivity.this, matches);
+                    LiveScoreAdapter LiveScoreAdapter = new LiveScoreAdapter
+                            (HomepageActivity.this, matches);
 
-                    LiveScoreAdapter adapter = new LiveScoreAdapter(HomepageActivity.this, matches);
+                    LiveScoreAdapter adapter = new LiveScoreAdapter(HomepageActivity.
+                            this, matches);
 
 
                     recyclerView.setAdapter(adapter);
@@ -221,17 +211,16 @@ public class HomepageActivity extends AppCompatActivity {
                     List<SportNews> News = response.body().getArticle();
 
 
-                    NewsAdapter adapter = new NewsAdapter(News, R.layout.news_layout, getApplicationContext());
+                    NewsAdapter adapter = new NewsAdapter(News, R.layout.news_layout,
+                            getApplicationContext());
 
                     recyclerView2.setAdapter(adapter);
 
 
-//                    String image_url = IMAGE_URL_BASE_PATH + response.body().getWeather().getIcon();
-//                    Picasso.get().load(image_url).into(imgWeather);
-
 
                 } else {
-                    Toast.makeText(HomepageActivity.this, response.message(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HomepageActivity.this, response.message(),
+                            Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -256,7 +245,8 @@ public class HomepageActivity extends AppCompatActivity {
 
         ((Call) call).enqueue(new Callback<SportVideosResponse>() {
             @Override
-            public void onResponse(Call<SportVideosResponse> call, Response<SportVideosResponse> response) {
+            public void onResponse(Call<SportVideosResponse> call, Response<SportVideosResponse>
+                    response) {
 
 
                 SportVideosResponse body = response.body();
@@ -265,7 +255,8 @@ public class HomepageActivity extends AppCompatActivity {
 
                     Log.e(TAG, String.format("OnSuccess: %s", body.getItem()));
 
-                    VideosAdapter adapter = new VideosAdapter(videos, R.layout.videos_layout, getApplicationContext());
+                    VideosAdapter adapter = new VideosAdapter(videos, R.layout.videos_layout,
+                            getApplicationContext());
 
                     recyclerView3.setAdapter(adapter);
 
@@ -275,7 +266,8 @@ public class HomepageActivity extends AppCompatActivity {
 
                 } else {
                     Log.e(TAG, String.format("OnFailure: %s", response.message()));
-                    Toast.makeText(HomepageActivity.this, response.message(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HomepageActivity.this, response.message(),
+                            Toast.LENGTH_SHORT).show();
                 }
 
 

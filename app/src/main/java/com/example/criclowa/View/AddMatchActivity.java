@@ -47,22 +47,20 @@ public class AddMatchActivity extends AppCompatActivity {
 
                     addMatch(HomeTeamName,HostTeamName,HomeTeamScore,HostTeamScore);
 
-
-
                 }else {
 
-                    Toast.makeText(getApplicationContext(),"Artist Name cannot be empty",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Artist Name cannot be empty"
+                            ,Toast.LENGTH_SHORT).show();
                 }
-
             }
-
 
         });
 
 
     }
 
-    public void addMatch(String HomeTeamName, String HostTeamName, String HomeTeamScore,String HostTeamScore){
+    public void addMatch(String HomeTeamName, String HostTeamName, String HomeTeamScore
+            ,String HostTeamScore){
 
 
         String id = myRef.push().getKey();

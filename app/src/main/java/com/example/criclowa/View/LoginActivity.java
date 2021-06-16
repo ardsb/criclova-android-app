@@ -23,7 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
-    TextView input, input2,register,registerPage;
+    TextView input, input2, registerPage;
     Button login;
     CheckBox rememberMe;
     SharedPreferences sharedPreferences;
@@ -34,67 +34,60 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         getSupportActionBar().hide();
         mAuth = FirebaseAuth.getInstance();
 
-        rememberMe=findViewById(R.id.checkBox);
+        rememberMe = findViewById(R.id.checkBox);
 
 //      Initialize shared preferences
         sharedPreferences = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
 
-        final String input_email="arkam.ardsb@gmail.com";
-        final String input_password="123456";
+        final String input_email = "arkam.ardsb@gmail.com";
+        final String input_password = "123456";
 
-        input=findViewById(R.id.input_email);
+        input = findViewById(R.id.input_email);
         input.setText(input_email);
-        input2=findViewById(R.id.input_password);
+        input2 = findViewById(R.id.input_password);
         input2.setText(input_password);
-        registerPage=findViewById(R.id.btnRegister);
+        registerPage = findViewById(R.id.btnRegister);
         registerPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mainActivityIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+                Intent mainActivityIntent = new Intent(LoginActivity.this,
+                        RegisterActivity.class);
                 startActivity(mainActivityIntent);
             }
         });
-//        register= findViewById(R.id.btnRegister1);
-//        register.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent mainActivityIntent = new Intent(LoginActivity.this, HomepageActivity.class);
-//                startActivity(mainActivityIntent);
-//
-//
-//            }
-//
-//        });
-        login=findViewById(R.id.btnLogin);
+
+        login = findViewById(R.id.btnLogin);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String getName= input.getText().toString();
-                String getPassword=input2.getText().toString();
+                String getName = input.getText().toString();
+                String getPassword = input2.getText().toString();
 
 
-                if (rememberMe.isChecked()){
+                if (rememberMe.isChecked()) {
 
-                    Toast.makeText(LoginActivity.this,"Your login credential has successfully saved",Toast.LENGTH_SHORT).show();
-                    SharedPreferences.Editor editor= sharedPreferences.edit();
+                    Toast.makeText(LoginActivity.this,
+                            "Your login credential has successfully saved",
+                            Toast.LENGTH_SHORT).show();
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
 
                     editor.putString("Name", getName);
                     editor.putString("Password", getPassword);
                     editor.commit();
-                }else {
-                    Toast.makeText(LoginActivity.this,"Your login credential has not saved",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(LoginActivity.this,
+                            "Your login credential has not saved", Toast.LENGTH_SHORT).show();
                 }
-                String email=input.getText().toString();
-                String password=input2.getText().toString();
+                String email = input.getText().toString();
+                String password = input2.getText().toString();
 
-                signInUser(email,password);
+                signInUser(email, password);
                 Intent main = new Intent(LoginActivity.this, HomepageActivity.class);
                 startActivity(main);
-
 
 
             }
@@ -102,7 +95,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
-    public void signInUser(String email, String password){
+
+    public void signInUser(String email, String password) {
 
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -112,14 +106,15 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(LoginActivity.this, "Welcome to firebase"+user.getEmail(),
+                            Toast.makeText(LoginActivity.this, "Welcome to firebase"
+                                            + user.getEmail(),
                                     Toast.LENGTH_SHORT).show();
 //                            updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(LoginActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Authentication failed."
+                                    , Toast.LENGTH_SHORT).show();
 //                            updateUI(null);
                         }
 

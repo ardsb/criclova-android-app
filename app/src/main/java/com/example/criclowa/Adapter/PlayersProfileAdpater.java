@@ -31,12 +31,15 @@ public class PlayersProfileAdpater extends RecyclerView.Adapter<PlayersProfileAd
 
 
     public class ViewHolder extends RecyclerView.ViewHolder   {
-        TextView profileName, profileCountryName,txtProfileAge,txtProfileBorn,txtPlayingRole,txtMajorTeam
-                ,txtBattingStyle,txtBowlingStyle; //For Profile
-        Button btnDelete;
-       public CircleImageView imageView;
+
         LinearLayout layout;
 
+        TextView profileName, profileCountryName,txtProfileAge,txtProfileBorn,txtPlayingRole
+                ,txtMajorTeam,txtBattingStyle,txtBowlingStyle; //For Profile
+
+        Button btnDelete;
+
+       public CircleImageView imageView;
 
         public ViewHolder(View view) {
             super(view);
@@ -52,9 +55,6 @@ public class PlayersProfileAdpater extends RecyclerView.Adapter<PlayersProfileAd
             btnDelete = view.findViewById(R.id.btnDelete);
             layout = view.findViewById(R.id.playerProfileLayout);
             imageView =view.findViewById(R.id.imgProfileImageList);
-
-
-
 
         }
     }
@@ -77,8 +77,6 @@ public class PlayersProfileAdpater extends RecyclerView.Adapter<PlayersProfileAd
 
         PlayerDetails playerDetails = dataSet.get(position);
 
-
-
         viewHolder.profileName.setText(dataSet.get(position).getPlayerName());
         viewHolder.profileCountryName.setText(dataSet.get(position).getCountry());
         viewHolder.txtProfileAge.setText(dataSet.get(position).getCurrentAge());
@@ -98,7 +96,8 @@ public class PlayersProfileAdpater extends RecyclerView.Adapter<PlayersProfileAd
         viewHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mainActivityIntent = new Intent(context, DisplayPlayersProfileDetailActivity.class);
+                Intent mainActivityIntent = new Intent(context
+                        ,DisplayPlayersProfileDetailActivity.class);
                 PlayerDetails playerDetails=dataSet.get(position);
                 mainActivityIntent.putExtra("Player Details",playerDetails);
                 context.startActivity(mainActivityIntent);
@@ -108,16 +107,12 @@ public class PlayersProfileAdpater extends RecyclerView.Adapter<PlayersProfileAd
         viewHolder.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "One record deleted ", Toast.LENGTH_SHORT).show();
-                DatabaseReference dR = FirebaseDatabase.getInstance().getReference("player-details").child(dataSet.get(position).getId());
-//
+                Toast.makeText(context, "One player has deleted ", Toast.LENGTH_SHORT).show();
+                DatabaseReference dR = FirebaseDatabase.getInstance().getReference
+                        ("player-details").child(dataSet.get(position).getId());
                 dR.removeValue();
             }
         });
-
-
-
-
     }
     @Override
     public int getItemCount() {

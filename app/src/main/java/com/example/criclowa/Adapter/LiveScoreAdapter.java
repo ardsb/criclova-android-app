@@ -24,7 +24,6 @@ public class LiveScoreAdapter extends RecyclerView.Adapter<LiveScoreAdapter.View
 
     public class ViewHolder extends RecyclerView.ViewHolder   {
         private TextView teamNameA, teamNameB,teamNameAScores,teamNameBScores;
-
         private LinearLayout layout;
 
         public ViewHolder(View view) {
@@ -54,15 +53,10 @@ public class LiveScoreAdapter extends RecyclerView.Adapter<LiveScoreAdapter.View
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
 
-
         viewHolder.teamNameA.setText(dataSet.get(position).getTeamNameA());
         viewHolder.teamNameB.setText(dataSet.get(position).getTeamNameB());
         viewHolder.teamNameAScores.setText(dataSet.get(position).getTeamNameAScores());
         viewHolder.teamNameBScores.setText(dataSet.get(position).getTeamNameBScores());
-
-
-
-
 
     }
     @Override
