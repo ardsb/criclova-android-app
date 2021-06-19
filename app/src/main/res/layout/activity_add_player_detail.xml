@@ -60,6 +60,10 @@
                         app:icon="@drawable/ic_baseline_add_photo_alternate_24">
 
                     </Button>
+
+
+
+
                 </LinearLayout>
 
 
@@ -68,7 +72,7 @@
 
 
             <LinearLayout
-                android:layout_width="320dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"
                 android:orientation="vertical">
@@ -82,6 +86,7 @@
                         android:id="@+id/txtPLayersName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="Arkam"
                         android:background="?android:colorBackground"
                         android:hint="Name" />
 
@@ -89,7 +94,6 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/input_layout_Fullname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -98,6 +102,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
+                        android:text="test123"
                         android:background="?android:colorBackground"
                         android:hint="Age"
                         android:inputType="none" />
@@ -112,6 +117,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
+                        android:text="test123"
                         android:background="?android:colorBackground"
                         android:hint="Born" />
 
@@ -126,6 +132,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
+                        android:text="test123"
                         android:background="?android:colorBackground"
                         android:hint="Country" />
 
@@ -140,6 +147,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
+                        android:text="test123"
                         android:background="?android:colorBackground"
                         android:hint="Playing Role" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -154,6 +162,8 @@
                         android:id="@+id/txtMajorteam"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="test123"
+
                         android:layout_marginTop="20dp"
                         android:background="?android:colorBackground"
                         android:hint="Major team"
@@ -162,7 +172,6 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/input_layout_HostTeam"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -170,28 +179,384 @@
                         android:id="@+id/txtPlayerBattingStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="test123"
                         android:layout_marginTop="20dp"
                         android:background="?android:colorBackground"
                         android:hint="Batting Style" />
 
-
-
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/input_layout_Password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <EditText
                         android:id="@+id/txtPlayerBowlingStyle"
                         android:layout_width="match_parent"
+                        android:text="test123"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:background="?android:colorBackground"
                         android:hint="Bowling Style" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="horizontal">
+
+                    <ScrollView
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+                        <LinearLayout
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginBottom="30dp"
+                                >
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="sans-serif-medium"
+                                    android:text="Add Batting Statistic"
+                                    android:textSize="18sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="200dp"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginBottom="30dp"
+                                >
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:id="@+id/txtMatchesStatistic"
+                                        android:layout_width="match_parent"
+                                        android:text="test123"
+                                        android:layout_height="wrap_content"
+                                        android:background="?android:colorBackground"
+                                        android:hint="Matches" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/input_layout_Fullname"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:id="@+id/txtInningsStatistic"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="20dp"
+                                        android:text="test123"
+                                        android:background="?android:colorBackground"
+                                        android:hint="Innings"
+                                        android:inputType="none" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:id="@+id/txtRunsStaistic"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="20dp"
+                                        android:text="test123"
+                                        android:background="?android:colorBackground"
+                                        android:hint="Runs" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:id="@+id/txtHSStatistic"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="test123"
+                                        android:layout_marginTop="20dp"
+                                        android:background="?android:colorBackground"
+                                        android:hint="High Score" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:id="@+id/txtAverageStatistic"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="test123"
+                                        android:layout_marginTop="20dp"
+                                        android:background="?android:colorBackground"
+                                        android:hint="Average" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                                <com.google.android.material.textfield.TextInputLayout
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:id="@+id/txtStrikeRateStatistic"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="?android:colorBackground"
+                                        android:hint="Strike Rate"
+                                        android:text="test123"
+                                        android:layout_marginTop="20dp"
+                                        android:inputType="none" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:id="@+id/txtHalfCenturyStatistic"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="test123"
+                                        android:layout_marginTop="20dp"
+                                        android:background="?android:colorBackground"
+                                        android:hint="Half Century" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:id="@+id/txtCenturyStatistic"
+                                        android:layout_width="match_parent"
+                                        android:text="test123"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="20dp"
+                                        android:background="?android:colorBackground"
+                                        android:hint="Century" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/input_layout_HostTeam"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:id="@+id/txtSixesStatistic"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="test123"
+                                        android:layout_marginTop="20dp"
+                                        android:background="?android:colorBackground"
+                                        android:hint="Sixes" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/input_layout_Password"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:id="@+id/txtfoursStatistic"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="test123"
+                                        android:layout_marginTop="20dp"
+                                        android:background="?android:colorBackground"
+                                        android:hint="fours" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </ScrollView>
+                    <ScrollView
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_marginRight="10dp"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginBottom="30dp"
+                                >
+
+                                <TextView
+                                    android:id="@+id/textView3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="sans-serif-medium"
+                                    android:text="Add Bowling Statistic"
+                                    android:textSize="18sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="200dp"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_marginBottom="30dp"
+                                >
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:id="@+id/txtMatchesStatisticBowling"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="?android:colorBackground"
+                                        android:hint="Matches" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:id="@+id/txtInningsStatisticBowling"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="20dp"
+                                        android:background="?android:colorBackground"
+                                        android:hint="Innings"
+                                        android:inputType="none" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:id="@+id/txtBallsStaistic"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="20dp"
+                                        android:background="?android:colorBackground"
+                                        android:hint="Balls" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:id="@+id/txtWicketsStatistic"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="20dp"
+                                        android:background="?android:colorBackground"
+                                        android:hint="Wickets" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:id="@+id/txtFourWicketsHaulStatistic"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="20dp"
+                                        android:background="?android:colorBackground"
+                                        android:hint="Four Wickets Haul" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                                <com.google.android.material.textfield.TextInputLayout
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:id="@+id/txtFiveWicketsHaulStatistic"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="?android:colorBackground"
+                                        android:hint="Five Wickets Haul"
+                                        android:layout_marginTop="20dp"
+                                        android:inputType="none" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:id="@+id/txtAverageStatisticBowling"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="20dp"
+                                        android:background="?android:colorBackground"
+                                        android:hint="Average" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:id="@+id/txtEconStatistic"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="20dp"
+                                        android:background="?android:colorBackground"
+                                        android:hint="Economy" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </ScrollView>
+
+                </LinearLayout>
 
 
                 <LinearLayout
@@ -205,9 +570,6 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.9">
 
-
-
-
                     <Button
                         android:id="@+id/btnAdd"
                         android:layout_width="match_parent"
@@ -216,6 +578,8 @@
                         android:layout_gravity="center"
                         android:background="?attr/colorSecondary"
                         android:text="ADD the details " />
+
+
                 </LinearLayout>
 
             </LinearLayout>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/tools"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card_view"
@@ -13,8 +12,7 @@
     card_view:contentPaddingBottom="10dp"
     card_view:contentPaddingLeft="10dp"
     card_view:contentPaddingRight="10dp"
-    card_view:contentPaddingTop="10dp"
-    app:ignore="NamespaceTypo">
+    card_view:contentPaddingTop="10dp">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -51,7 +49,7 @@
                     android:layout_weight="1"
                     android:fontFamily="sans-serif-black"
                     android:paddingLeft="10dp"
-                    android:text="Title"
+                    android:text="Movie Name"
                     android:textSize="14sp" />
             </LinearLayout>
 

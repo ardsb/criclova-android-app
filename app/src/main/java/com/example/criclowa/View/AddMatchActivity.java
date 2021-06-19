@@ -49,7 +49,7 @@ public class AddMatchActivity extends AppCompatActivity {
 
                 }else {
 
-                    Toast.makeText(getApplicationContext(),"Artist Name cannot be empty"
+                    Toast.makeText(getApplicationContext(),"Match details cannot be empty"
                             ,Toast.LENGTH_SHORT).show();
                 }
             }
@@ -59,8 +59,8 @@ public class AddMatchActivity extends AppCompatActivity {
 
     }
 
-    public void addMatch(String HomeTeamName, String HostTeamName, String HomeTeamScore
-            ,String HostTeamScore){
+    public void addMatch(String HomeTeamName, String HostTeamName, String HomeTeamScore,
+                         String HostTeamScore){
 
 
         String id = myRef.push().getKey();

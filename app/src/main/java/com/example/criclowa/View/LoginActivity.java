@@ -86,8 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                 String password = input2.getText().toString();
 
                 signInUser(email, password);
-                Intent main = new Intent(LoginActivity.this, HomepageActivity.class);
-                startActivity(main);
+
 
 
             }
@@ -109,6 +108,10 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, "Welcome to firebase"
                                             + user.getEmail(),
                                     Toast.LENGTH_SHORT).show();
+
+                            Intent main = new Intent(LoginActivity.this,
+                                    HomepageActivity.class);
+                            startActivity(main);
 //                            updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.

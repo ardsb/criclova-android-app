@@ -1,0 +1,804 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".View.PlayerStatisticActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgProfileDisplayListStatistic"
+            android:layout_width="130dp"
+            android:layout_height="150dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/arkam"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp"
+            app:srcCompat="@drawable/arkam" />
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:id="@+id/txtProfileNameInput"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:fontFamily="sans-serif-black"
+                        android:paddingHorizontal="5dp"
+                        android:text="Name:"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/txtProfileNameStatistic"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:paddingHorizontal="5dp"
+                        android:text="Arkam Iqbal" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:id="@+id/txtProfileAgeInput"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:fontFamily="sans-serif-black"
+                        android:paddingHorizontal="5dp"
+                        android:text="Age:"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/txtProfileAge"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:paddingHorizontal="5dp"
+                        android:text="25" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:id="@+id/txtProfileBornInput"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:fontFamily="sans-serif-black"
+                        android:paddingHorizontal="5dp"
+                        android:text="Born:"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/txtProfileBorn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:paddingHorizontal="5dp"
+                        android:text="April 3, 1996,Colombo, Srilanka" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:id="@+id/txtProfileCountryNameInput"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:fontFamily="sans-serif-black"
+                        android:paddingHorizontal="5dp"
+                        android:text="Country:"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/txtProfileCountryNameStatistic"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:paddingHorizontal="5dp"
+                        android:text="Sriankan" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:id="@+id/txtPlayingRoleInput"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:fontFamily="sans-serif-black"
+                        android:paddingHorizontal="5dp"
+                        android:text="PayingRole:"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/txtPlayingRole"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:paddingHorizontal="5dp"
+                        android:text="Top Order Batsmen" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:id="@+id/txtMajorTeamInput"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:fontFamily="sans-serif-black"
+                        android:paddingHorizontal="5dp"
+                        android:text="MajorTeam:"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/txtMajorTeam"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:paddingHorizontal="5dp"
+                        android:text="India,Asia XI,Mumbai,Mumbai Indians,Yorkshire" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:id="@+id/txtBattingStyleInput"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:fontFamily="sans-serif-black"
+                        android:paddingHorizontal="5dp"
+                        android:text="Batting Style:"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/txtBattingStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:paddingHorizontal="5dp"
+                        android:text="Right Hand Batsmen" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:id="@+id/txtBowlingStyleInput"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:fontFamily="sans-serif-black"
+                        android:paddingHorizontal="5dp"
+                        android:text="Bowling Style:"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/txtBowlingStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:paddingHorizontal="5dp"
+                        android:text="Right-arm offbreak, Legbreak googly" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/darker_gray"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtBattingS"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:paddingHorizontal="5dp"
+            android:text="Batting Statistic"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txtBowling"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:paddingHorizontal="5dp"
+            android:text="Bowling Style"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:id="@+id/txt1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:fontFamily="sans-serif-black"
+                            android:paddingHorizontal="5dp"
+                            android:text="Matches:"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txtMatchesPassing"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:paddingHorizontal="5dp"
+                            android:text="177" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:id="@+id/txt2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:fontFamily="sans-serif-black"
+                            android:paddingHorizontal="5dp"
+                            android:text="Innings:"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txtInningsPassing"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:paddingHorizontal="5dp"
+                            android:text="177" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:id="@+id/txt4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:fontFamily="sans-serif-black"
+                            android:paddingHorizontal="5dp"
+                            android:text="Runs:"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txtRunsPassing"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:paddingHorizontal="5dp"
+                            android:text="177" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:id="@+id/txt5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:fontFamily="sans-serif-black"
+                            android:paddingHorizontal="5dp"
+                            android:text="HS:"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txtHSPassing"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:paddingHorizontal="5dp"
+                            android:text="177" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:id="@+id/txt6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:fontFamily="sans-serif-black"
+                            android:paddingHorizontal="5dp"
+                            android:text="Ave:"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txtAvePassing"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:paddingHorizontal="5dp"
+                            android:text="177" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:id="@+id/txt8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:fontFamily="sans-serif-black"
+                            android:paddingHorizontal="5dp"
+                            android:text="SR:"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txtSRPassing"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:paddingHorizontal="5dp"
+                            android:text="177" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:id="@+id/txt13"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:fontFamily="sans-serif-black"
+                            android:paddingHorizontal="5dp"
+                            android:text="50:"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txt50Passing"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:paddingHorizontal="5dp"
+                            android:text="177" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:id="@+id/txt14"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:fontFamily="sans-serif-black"
+                            android:paddingHorizontal="5dp"
+                            android:text="100:"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txt100Passing"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:paddingHorizontal="5dp"
+                            android:text="177" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:id="@+id/txt9"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:fontFamily="sans-serif-black"
+                            android:paddingHorizontal="5dp"
+                            android:text="4s:"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txt4sPassing"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:paddingHorizontal="5dp"
+                            android:text="177" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:id="@+id/txt10"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:fontFamily="sans-serif-black"
+                            android:paddingHorizontal="5dp"
+                            android:text="6s:"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txt6sPassing"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:paddingHorizontal="5dp"
+                            android:text="177" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical"
+                    android:paddingLeft="100dp">
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:fontFamily="sans-serif-black"
+                            android:paddingHorizontal="5dp"
+                            android:text="Matches:"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txtMatchesBowlingPassing"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:paddingHorizontal="5dp"
+                            android:text="177" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:fontFamily="sans-serif-black"
+                            android:paddingHorizontal="5dp"
+                            android:text="Innings:"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txtInningsBowlingPassing"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:paddingHorizontal="5dp"
+                            android:text="177" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:fontFamily="sans-serif-black"
+                            android:paddingHorizontal="5dp"
+                            android:text="Balls:"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txtBallsPassing"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:paddingHorizontal="5dp"
+                            android:text="177" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:fontFamily="sans-serif-black"
+                            android:paddingHorizontal="5dp"
+                            android:text="Wkts:"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txtWktsPassing"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:paddingHorizontal="5dp"
+                            android:text="177" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:fontFamily="sans-serif-black"
+                            android:paddingHorizontal="5dp"
+                            android:text="4w:"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txt4wPassing"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:paddingHorizontal="5dp"
+                            android:text="177" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:fontFamily="sans-serif-black"
+                            android:paddingHorizontal="5dp"
+                            android:text="5w:"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txt5wPassing"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:paddingHorizontal="5dp"
+                            android:text="177" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:fontFamily="sans-serif-black"
+                            android:paddingHorizontal="5dp"
+                            android:text="Ave:"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txtAveBowlingPassing"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:paddingHorizontal="5dp"
+                            android:text="177" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:fontFamily="sans-serif-black"
+                            android:paddingHorizontal="5dp"
+                            android:text="Econ:"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txtEconPassing"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:paddingHorizontal="5dp"
+                            android:text="177" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="100dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:backgroundTint="@color/design_default_color_error"
+                android:text="Delete" />
+
+            <Button
+                android:id="@+id/btnEdit"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Edit" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>

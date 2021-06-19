@@ -27,12 +27,16 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/england_logo"/>
+                android:src="@drawable/england_logo"
+
+                />
 
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/new_zealand_cricket"/>
+                android:src="@drawable/new_zealand_cricket"
+
+                />
         </LinearLayout>
 
         <LinearLayout

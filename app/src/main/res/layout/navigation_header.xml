@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="250dp"
     android:layout_height="wrap_content"
     android:layout_gravity=""
-    android:background="?colorPrimary">
+    android:background="?colorPrimary"
+    tool:context=".View.HomepageActivity">
 
 
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/btnProfile"
+        android:id="@+id/imgProfile"
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_gravity="center"
@@ -36,7 +38,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:fontFamily="sans-serif-black"
-        android:text="Admin" />
+        android:text="Srilanka" />
 
 
 </LinearLayout>

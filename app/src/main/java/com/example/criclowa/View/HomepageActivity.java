@@ -8,18 +8,24 @@ import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.criclowa.Adapter.LiveScoreAdapter;
 import com.example.criclowa.Adapter.NewsAdapter;
 import com.example.criclowa.Adapter.VideosAdapter;
 import com.example.criclowa.Model.Matches;
+import com.example.criclowa.Model.PlayerDetails;
 import com.example.criclowa.Model.SportNews;
 import com.example.criclowa.Model.SportNewsList;
 import com.example.criclowa.Model.Item;
@@ -34,6 +40,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,8 +63,6 @@ public class HomepageActivity extends AppCompatActivity {
     DatabaseReference myRef;
     List<Matches> matches;
     RecyclerView recyclerView, recyclerView2, recyclerView3;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,8 +92,6 @@ public class HomepageActivity extends AppCompatActivity {
         getMatchVideos();
 
 
-
-
         sharedPreferences = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
@@ -102,32 +105,33 @@ public class HomepageActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         NavigationView nav_view = (NavigationView) findViewById(R.id.nav_view);
-        nav_view.setNavigationItemSelectedListener(new NavigationView
-                .OnNavigationItemSelectedListener() {
+        nav_view.setNavigationItemSelectedListener
+                (new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
 
 
 
-               
+
 
                 if (id == R.id.txtAddMatch) {
 
-                    Intent mainActivityIntent = new Intent(HomepageActivity.this
-                            ,AddMatchActivity.class);
+                    Intent mainActivityIntent = new Intent(HomepageActivity.this,
+                            AddMatchActivity.class);
                     startActivity(mainActivityIntent);
+
                 } else if (id == R.id.txtAddPlayerDetails) {
 
-                    Intent mainActivityIntent = new Intent(HomepageActivity.this
-                            ,AddPlayerDetailActivity.class);
+                    Intent mainActivityIntent = new Intent(HomepageActivity.this,
+                            AddPlayerDetailActivity.class);
                     startActivity(mainActivityIntent);
 
 
                 } else if (id == R.id.txtShowPlayerDetails) {
 
-                    Intent mainActivityIntent = new Intent(HomepageActivity.this
-                            ,DisplayPlayersDetailsActivity.class);
+                    Intent mainActivityIntent = new Intent(HomepageActivity.this,
+                            DisplayPlayersDetailsActivity.class);
                     startActivity(mainActivityIntent);
 
                 }else if (id == R.id.txtLogout){
@@ -135,8 +139,14 @@ public class HomepageActivity extends AppCompatActivity {
                     editor.clear();
                     editor.commit();
 
+                    Toast.makeText(HomepageActivity.this,
+                            "You have successfully logout from the Criclova system",
+                            Toast.LENGTH_LONG).show();
+
+
                 } else if (id == R.id.txtExit)
-                    finish();
+
+                    finishAffinity();
 
                 return true;
             }
@@ -168,8 +178,8 @@ public class HomepageActivity extends AppCompatActivity {
                     LiveScoreAdapter LiveScoreAdapter = new LiveScoreAdapter
                             (HomepageActivity.this, matches);
 
-                    LiveScoreAdapter adapter = new LiveScoreAdapter(HomepageActivity.
-                            this, matches);
+                    LiveScoreAdapter adapter = new LiveScoreAdapter
+                            (HomepageActivity.this, matches);
 
 
                     recyclerView.setAdapter(adapter);
@@ -185,16 +195,6 @@ public class HomepageActivity extends AppCompatActivity {
     }
 
 
-    private void addingMatches(Matches matches) {
-
-        String id = myRef.push().getKey();
-
-        myRef.child(id).setValue(matches);
-
-        Toast.makeText(this, "The Match has started", Toast.LENGTH_LONG).show();
-
-
-    }
 
 
     private void getMatchNews() {
@@ -215,8 +215,6 @@ public class HomepageActivity extends AppCompatActivity {
                             getApplicationContext());
 
                     recyclerView2.setAdapter(adapter);
-
-
 
                 } else {
                     Toast.makeText(HomepageActivity.this, response.message(),
@@ -245,8 +243,8 @@ public class HomepageActivity extends AppCompatActivity {
 
         ((Call) call).enqueue(new Callback<SportVideosResponse>() {
             @Override
-            public void onResponse(Call<SportVideosResponse> call, Response<SportVideosResponse>
-                    response) {
+            public void onResponse(Call<SportVideosResponse> call,
+                                   Response<SportVideosResponse> response) {
 
 
                 SportVideosResponse body = response.body();
