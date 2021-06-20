@@ -89,8 +89,8 @@ public class PlayerDetails implements Serializable {
         Sixes = sixes;
         this.fours = fours;
 
-        Matches = matchesBowling;
-        Innings = inningsBowling;
+        MatchesBowling = matchesBowling;
+        InningsBowling = inningsBowling;
         Balls = balls;
         Wkts = wkts;
         this.fourWicketsHaul = fourWicketsHaul;

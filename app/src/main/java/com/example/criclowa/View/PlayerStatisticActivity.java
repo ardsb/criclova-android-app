@@ -99,16 +99,16 @@ public class PlayerStatisticActivity extends AppCompatActivity {
         txt6s=findViewById(R.id.txt6sPassing);
 
 
-        txtMatches.setText(playerDetails.getPlayerName());
-        txtInnings.setText(playerDetails.getCurrentAge());
-        txtRuns.setText(playerDetails.getBorn());
-        txtHS.setText(playerDetails.getCountry());
-        txtAve.setText(playerDetails.getPlayingRole());
-        txtSR.setText(playerDetails.getMajorTeams());
-        txt50.setText(playerDetails.getBattingStyle());
-        txt100.setText(playerDetails.getBowlingStyle());
-        txt4s.setText(playerDetails.getBattingStyle());
-        txt6s.setText(playerDetails.getBowlingStyle());
+        txtMatches.setText(playerDetails.getMatches());
+        txtInnings.setText(playerDetails.getInnings());
+        txtRuns.setText(playerDetails.getRunsBatting());
+        txtHS.setText(playerDetails.getHS());
+        txtAve.setText(playerDetails.getAve());
+        txtSR.setText(playerDetails.getSR());
+        txt50.setText(playerDetails.getHalfCentury());
+        txt100.setText(playerDetails.getCentury());
+        txt4s.setText(playerDetails.getFours());
+        txt6s.setText(playerDetails.getSixes());
 
 
         //For Bowling Statistic
@@ -123,6 +123,8 @@ public class PlayerStatisticActivity extends AppCompatActivity {
 
 
         txtMatchesBowlingPassing.setText(playerDetails.getMatchesBowling());
+        txtInningsBowlingPassing.setText(playerDetails.getInningsBowling());
+        txtBallPassing.setText(playerDetails.getBalls());
         txtWktsPassing.setText(playerDetails.getWkts());
         txt4wPassing.setText(playerDetails.getFourWicketsHaul());
         txt5wPassing.setText(playerDetails.getFiveWicketsHaul());
