@@ -95,7 +95,7 @@ public class PlayerDetails implements Serializable {
         Wkts = wkts;
         this.fourWicketsHaul = fourWicketsHaul;
         this.fiveWicketsHaul = fiveWicketsHaul;
-        Ave = aveBowling;
+        AveBowling = aveBowling;
         Econ = econ;
     }
 
